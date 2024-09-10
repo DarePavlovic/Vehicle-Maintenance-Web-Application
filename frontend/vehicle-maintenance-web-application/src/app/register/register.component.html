@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .menu-button {
+            display: block;
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .header {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">Biblioteka</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <button class="btn btn-outline-primary menu-button" onclick="saljiKuci()">Home</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-primary menu-button" onclick="saljiLogin()">Login</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-primary menu-button" onclick="saljiRegister()">Register</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-primary menu-button" onclick="saljiSearch()">Search</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container content">
+        <p class="header">Registracija novog korisnika</p>
+        <form name="Reg">
+            <div class="mb-3">
+                <label for="firstname" class="form-label">Firstname:</label>
+                <input type="text" class="form-control" name="firstname" id="firstname" [(ngModel)]="firstname" required>
+            </div>
+            <div class="mb-3">
+                <label for="lastname" class="form-label">Lastname:</label>
+                <input type="text" class="form-control" name="lastname" id="lastname" [(ngModel)]="lastname" required>
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" class="form-control" name="username" id="username" [(ngModel)]="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" name="password" id="password" [(ngModel)]="password" required>
+                <div style="color:red;text-align: left;">{{passMessage}}</div>
+            </div>
+            <div class="mb-3">
+                <label for="passwordR" class="form-label">Repeat Password:</label>
+                <input type="password" class="form-control" name="passwordR" id="passwordR" [(ngModel)]="passwordR" required>
+                <div style="color:red;text-align: left;">{{passRepeat}}</div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail:</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="mat@mail.com" [(ngModel)]="email" required>
+                <div style="color:red;">{{errorMail}}</div>
+            </div>
+            <div class="mb-3">
+                <input type="file" class="form-control" id="slikaUpload" (change)="slikaDodata($event)"
+                    accept="image/jpg, image/png, image/jpeg">
+                {{slikaPoruka}}
+                <img *ngIf="slikaSacuvana" class="mt-2" id="profile" [src]="putdoslike()" alt="Profile picture" />
+            </div>
+            <div class="mb-3"></div>
+            <label for="type" class="form-label">Type:</label>
+            <input type="text" class="form-control" name="type" id="type" [(ngModel)]="type" required>
+            <div class="mb-3">
+                <label for="coefficient" class="form-label">Coefficient:</label>
+                <input type="number" class="form-control" name="coefficient" id="coefficient" [(ngModel)]="coefficient" required>
+            </div>
+            <div class="mb-3"></div>
+                <label for="salary" class="form-label">Salary:</label>
+                <input type="number" class="form-control" name="salary" id="salary" [(ngModel)]="salary" required>
+            
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary" (click)="register()">Register</button>
+            </div>
+        </form>
+       
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
