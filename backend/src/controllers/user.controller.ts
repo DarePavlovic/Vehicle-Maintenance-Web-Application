@@ -25,6 +25,8 @@ export class UserController{
             username: req.body.username,
             password: req.body.password,
             email : req.body.email,
+            phone: req.body.phone,
+            address: req.body.address,
             picture: req.body.picture,
             //'picture' : typeof req.body.picture !== 'undefined' ? req.body.picture : 'profile_default.jpg',
             type: req.body.type,

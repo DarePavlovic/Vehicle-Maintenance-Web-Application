@@ -23,7 +23,7 @@ export class UserService {
     return this.http.post<User>(`${this.uri}/login`, data);
   }
 
-  register(first: string, last: string, userN: string, pass: string, mail: string, pict: string, type: string, coefficient: number, salary: number, idVehicle: Array<OID>
+  register(first: string, last: string, userN: string, pass: string, mail: string,phone:string, address:string, pict: string, type: string, coefficient: number, salary: number, idVehicle: Array<OID>
   ) {
     const data = {
       firstname: first,
@@ -31,6 +31,8 @@ export class UserService {
       username: userN,
       password: pass,
       email: mail,
+      phone:phone,
+      address: address,
       picture: pict,
       type: type,
       coefficient: coefficient,

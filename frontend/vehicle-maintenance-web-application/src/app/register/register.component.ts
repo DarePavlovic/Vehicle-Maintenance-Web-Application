@@ -44,6 +44,8 @@ export class RegisterComponent implements OnInit {
   type:string="";
   coefficient:number=1;
   salary:number=0;
+  address:string="";
+  phone:string="";
   idVehicle:any=null;
 
   emailPattern: RegExp = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
@@ -79,16 +81,16 @@ export class RegisterComponent implements OnInit {
       alert("You must fill all field for sign up");
       
       this.message=="Sva polja su obavezna"
-      //return;
+      return;
     }
-    // if(this.password!=this.passwordR){
-    //   this.passRepeat="Lozinke nisu iste!";
-    //   //return;
-    // }
-    // if(!this.passPattern.test(this.password)){
-    //   this.passMessage = "Lozinka mora biti izmedju 8 i 12 karaktera i treba satojati u sebi malo, veliko slovo, broj i neki od znakova: @$!%*#?&";
-    //   //return;
-    // }
+    if(this.password!=this.passwordR){
+      this.passRepeat="Lozinke nisu iste!";
+      return;
+    }
+    if(!this.passPattern.test(this.password)){
+      this.passMessage = "Lozinka mora biti izmedju 8 i 12 karaktera i treba satojati u sebi malo, veliko slovo, broj i neki od znakova: @$!%*#?&";
+      return;
+    }
 
     if(this.slika==null){
       this.slika = defaultProfilna
@@ -99,7 +101,7 @@ export class RegisterComponent implements OnInit {
         if(us==null){
           this.userService.getEmail(this.username, this.email).subscribe((use:User)=>{
             if(use==null){
-               this.userService.register(this.firstname, this.lastname, this.username, this.password, this.email, this.slika, this.type, this.coefficient, this.salary, this.idVehicle
+               this.userService.register(this.firstname, this.lastname, this.username, this.password, this.email,this.phone, this.address, this.slika, this.type, this.coefficient, this.salary, this.idVehicle
                 ).subscribe((resp:any)=>{
                  if(resp['message']=='ok'){
                   
