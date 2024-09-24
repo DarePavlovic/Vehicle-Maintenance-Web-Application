@@ -1,0 +1,31 @@
+import { OID } from "./Oid";
+export class Vehicle{
+    _id: string='';
+    model: string = '';
+    engine: string = '';
+    fuel: string = '';
+    yearMade: number = 0;
+    licensePlate: string = '';
+    picture: string = '';
+    mileage: number = 0;
+    mileageMonth: number = 0;
+    mileageTillServis: number = 0;
+    fuelConsumptionMonth: number = 0;
+    consumptionMonth: number = 0;
+    consumptionGeneral: number = 0;
+    status: string = '';
+    dateTire: Date = new Date();
+    dateRegistration: Date = new Date();
+    dateSmallServis: Date = new Date();
+    dateBigServis: Date = new Date();
+    dateFirstAid: Date = new Date();
+    dateFireExtinguisher: Date = new Date();
+    dateFuelFill: Date = new Date();
+    priceFuelMonth: number = 0;
+    priceMainainanceMonth: number = 0;
+    priceMainainanceGeneral: number = 0;
+    priceRegistration: number = 0;
+    vehicleValue: number = 0;
+    //ownerUsername: string = '';
+    idUser:string='';
+}

@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 let User = new Schema({
+    _id: {
+        type: Object, default: new mongoose.Types.ObjectId()
+    },
     firstname: {
         type: String
     },
@@ -37,7 +40,7 @@ let User = new Schema({
         type: Number
     },
     idVehicle: {
-        type: Array<ObjectId>
+        type: ObjectId
     }
 });
 const UserModel = mongoose.model('UserModel', User, 'User');

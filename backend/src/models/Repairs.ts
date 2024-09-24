@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 let Repairs = new Schema({
+    _id: {
+        type: Object, default: new mongoose.Types.ObjectId()
+    },
     idUser: {
         type: ObjectId
     }, 
@@ -10,10 +13,17 @@ let Repairs = new Schema({
         type: ObjectId
     },
     idDefect: {
-        type: ObjectId
+        type: Array<ObjectId>
     },
     date: {
         type: Date
+    },
+    price: {
+        type: Number
+    },
+    description: {
+        type: String
     }
 });
-export default mongoose.model('RepairsModel', Repairs, 'Repairs');
+const RepairsModel = mongoose.model('RepairsModel', Repairs, 'Repairs');
+export default RepairsModel;

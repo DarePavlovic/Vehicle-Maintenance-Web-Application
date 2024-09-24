@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +12,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { MechanicComponent } from './mechanic/mechanic.component';
 import { DriverComponent } from './driver/driver.component';
 import { AdminComponent } from './admin/admin.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { SendRepairsComponent } from './send-repairs/send-repairs.component';
+import { AddRepairsComponent } from './add-repairs/add-repairs.component';
+import { DriverProfileComponent } from './driver-profile/driver-profile.component';
+import { DefectComponent } from './defect/defect.component';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+import { SetVehicleComponent } from './set-vehicle/set-vehicle.component';
+import { AddFuelComponent } from './add-fuel/add-fuel.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +28,24 @@ import { AdminComponent } from './admin/admin.component';
     RegisterComponent,
     MechanicComponent,
     DriverComponent,
-    AdminComponent
+    AdminComponent,
+    UpdateUserComponent,
+    SendRepairsComponent,
+    AddRepairsComponent,
+    DriverProfileComponent,
+    DefectComponent,
+    AddVehicleComponent,
+    SetVehicleComponent,
+    AddFuelComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

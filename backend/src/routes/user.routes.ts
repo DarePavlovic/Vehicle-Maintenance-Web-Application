@@ -8,7 +8,7 @@ userRouter.route('/login').post(
     (req, res)=> new UserController().login(req, res)
 )
 
-userRouter.route('/register').post(//upload.single('profilePicture'),
+userRouter.route('/register').post(
     (req,res)=> new UserController().register(req,res)
 )
 
@@ -18,6 +18,21 @@ userRouter.route('/getUser').post(
 
 userRouter.route('/getEmail').post(
     (req,res)=> new UserController().getEmail(req,res)
+)
+
+userRouter.route('/updateUser').post(
+    (req,res)=> new UserController().updateUser(req,res)
+)   
+userRouter.route('/getAllUsers').get(
+    (req,res)=> new UserController().getAllUsers(req,res)
+)  
+
+userRouter.route('/setVehicle').post(
+    (req,res)=> new UserController().setVehicle(req,res)
+)
+
+userRouter.route('/getVehicle').post(
+    (req,res)=> new UserController().getVehicle(req,res)
 )
 
 

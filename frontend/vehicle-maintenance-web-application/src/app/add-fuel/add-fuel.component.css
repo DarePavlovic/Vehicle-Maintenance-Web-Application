@@ -1,0 +1,33 @@
+.fuel-tracker {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  input {
+    padding: 5px;
+  }
+  
+  button {
+    padding: 7px 10px;
+    cursor: pointer;
+  }
+@media (max-width: 600px) {
+    .fuel-tracker {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    input, button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

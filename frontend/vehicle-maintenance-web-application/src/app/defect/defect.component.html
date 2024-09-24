@@ -1,0 +1,45 @@
+
+<div class="container mt-4">
+    <h3>Car Repair Details</h3>
+    <form name="repair">
+      <!-- Description of the car defect -->
+      <div class="mb-3">
+        <label for="carDefectDescription" class="form-label">Description of the Car Defect</label>
+        <textarea class="form-control" id="carDefectDescription" name="carDefectDescription" [(ngModel)]="defectDescription" rows="3" placeholder="Describe the car defect..." disabled="isMechanic"></textarea>
+      </div>
+  
+      <!-- Picture Before -->
+      <div class="mb-3">
+        <label for="pictureBefore" class="form-label">Picture Before</label>
+        <input type="file" class="form-control" name="pictureBefore" id="pictureBefore"  >
+      </div>
+  
+      <!-- Picture After -->
+      <div class="mb-3" >
+        <label for="pictureAfter" class="form-label">Picture After</label>
+        <input type="file" class="form-control" name="pictureAfter" id="pictureAfter">
+      </div>
+  
+      <!-- Price of Parts -->
+      <div class="mb-3">
+        <label for="priceParts" class="form-label">Price of Parts (in USD)</label>
+        <input type="number" class="form-control" id="priceParts" name="priceParts" [(ngModel)]="priceParts" placeholder="Enter price of parts" required>
+      </div>
+  
+      <!-- Mechanic Fee -->
+      <div class="mb-3" >
+        <label for="mechanicFee" class="form-label">Mechanic Fee (in USD)</label>
+        <input type="number" class="form-control" id="mechanicFee" name="mechanicFee" [(ngModel)]="mechanicFee" placeholder="Enter mechanic fee" required>
+      </div>
+  
+      <!-- Total Price -->
+      <div class="mb-3">
+        <label for="totalPrice" class="form-label">Total Price (in Dinar)</label>
+        <input type="number" class="form-control" id="totalPrice" name="totalPrice" [(ngModel)]="totalPrice" placeholder="Total price will be calculated here" required>
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" (click)="submitDefect">Submit</button>
+    </form>
+  </div>
+  

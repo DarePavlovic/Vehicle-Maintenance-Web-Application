@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 let Vehicle = new Schema({
-    _id:{
-        type:ObjectId
+    _id: {
+        type: Object, default: new mongoose.Types.ObjectId()
     },
     model: {
         type: String
@@ -17,6 +17,9 @@ let Vehicle = new Schema({
     },
     yearMade: {
         type: Number
+    },
+    licensePlate: {
+        type: String
     },
     picture: {
         type: String
@@ -40,7 +43,7 @@ let Vehicle = new Schema({
         type: Number
     },
     status: {
-        type: Boolean
+        type: String
     },
     dateTire: {
         type: Date
@@ -55,6 +58,12 @@ let Vehicle = new Schema({
         type: Date
     },
     dateFirstAid: {
+        type: Date
+    },
+    dateFireExtinguisher: {
+        type: Date
+    },
+    dateFuelFill: {
         type: Date
     },
     priceFuelMonth: {
@@ -76,4 +85,6 @@ let Vehicle = new Schema({
         type: ObjectId
     }
 });
-export default mongoose.model('VehicleModel', Vehicle, 'vehicles');
+
+const VehicleModel = mongoose.model('VehicleModel', Vehicle, 'vehicles');
+export default VehicleModel;

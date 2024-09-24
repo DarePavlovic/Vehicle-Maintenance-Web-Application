@@ -3,9 +3,12 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 let Defect = new Schema({
-    _id:{
-        type:ObjectId
+    _id: {
+        type: Object, default: new mongoose.Types.ObjectId()
     },
+    // idRepair: {
+    //     type: Object, default: new mongoose.Types.ObjectId()
+    // },
     description: {
         type: String
     },
@@ -25,4 +28,6 @@ let Defect = new Schema({
         type: Number
     }
 });
-export default mongoose.model('DefectModel', Defect, 'Defect');
+
+const DefectModel = mongoose.model('DefectModel', Defect, 'Defect');
+export default DefectModel;

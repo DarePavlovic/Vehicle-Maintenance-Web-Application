@@ -1,59 +1,70 @@
-<!-- driver-info.component.html -->
-
-<div class="container">
-    <!-- Header Section -->
-    <header class="header">
-      <img src="assets/logo.png" alt="Company Logo" class="logo">
-      <h1>Driver and Vehicle Information</h1>
-    </header>
-  
-    <!-- Driver Information Section -->
-    <section class="driver-info">
-      <h2>Driver Information</h2>
-      <div class="driver-profile">
-        <img src="assets/vozac.png" alt="Driver Photo" class="profile-photo">
-        <div class="driver-details">
-          <h3>{{ driver.name }}</h3>
-          <p>Rating: ⭐{{ driver.rating }}</p>
-          <p>{{ driver.bio }}</p>
-        </div>
-      </div>
-      <div class="driver-contact">
-        <h4>Contact Info</h4>
-        <p>Phone: <a href="tel:{{ driver.phone }}">{{ driver.phone }}</a></p>
-        <p>Email: <a href="mailto:{{ driver.email }}">{{ driver.email }}</a></p>
-      </div>
-      <div class="driver-license">
-        <h4>License Information</h4>
-        <p>License Number: {{ driver.licenseNumber }}</p>
-        <p>Expiration Date: {{ driver.licenseExpiry }}</p>
-      </div>
-    </section>
-  
-    <!-- Car Information Section -->
-    <section class="car-info">
-      <h2>Car Information</h2>
-      <div class="car-profile">
-        <img src="assets/car_picture.png" alt="Car Image" class="car-photo">
-        <div class="car-details">
-          <h3>{{ car.make }} {{ car.model }} ({{ car.year }})</h3>
-          <p>License Plate: {{ car.licensePlate }}</p>
-          <p>Color: {{ car.color }}</p>
-        </div>
-      </div>
-      <div class="car-specifications">
-        <h4>Car Specifications</h4>
-        <p>Fuel Type: {{ car.fuelType }}</p>
-        <p>Type: {{ car.type }}</p>
-        <p>Mileage: {{ car.mileage }} miles</p>
-        <p>Features: {{ car.features.join(', ') }}</p>
-      </div>
-    </section>
-  
-    <!-- Action Buttons -->
-    <div class="action-buttons">
-      <button (click)="bookRide()">Book a Ride</button>
-      <button (click)="reportIssue()">Report an Issue</button>
-    </div>
+<div class="container-fluid">
+  <div class="row">
+      <!-- Header -->
+      <header class="col-12 bg-primary text-white py-3">
+          <button class="btn btn-primary d-md-none" type="button" aria-label="Toggle navigation" (click)="toggleSidebar()">
+              ☰
+          </button>
+          <h3 class="text-center">Driver Dashboard</h3>
+      </header>
   </div>
-  
+  <div class="row">
+      <!-- Side Menu -->
+      
+      <nav id="sidebarMenu" #sidebarMenu class="col-md-2 d-md-block bg-light sidebar collapse">
+      <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+              <ul class="nav flex-column">
+                  <li class="nav-item">
+                      <a class="nav-link active" routerLink="/driver/updateUser">
+                          Azuriraj podatke
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" routerLink="/driver/addFuel">
+                          Sipaj gorivo
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/driver/addRepair">
+                          Prijavi kvar
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">
+                          Prijavi trosak
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">
+                          Evidencija plate
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#">
+                          Moje vozilo
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Promeni sifru
+                    </a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        Odjavi se
+                    </a>
+                </li>
+              </ul>
+          </div>
+      </nav>
+      </nav>
+      <!-- Center Part -->
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div>
+              <!-- Angular Router Outlet -->
+              <router-outlet></router-outlet>
+          </div>
+      </main>
+  </div>
+</div>

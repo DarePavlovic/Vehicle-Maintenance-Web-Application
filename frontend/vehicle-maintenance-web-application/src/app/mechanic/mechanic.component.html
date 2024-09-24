@@ -1,1 +1,34 @@
-<p>mechanic works!</p>
+<div class="container">
+    <header class="header">
+        <img src="assets/logo.png" alt="Drive Park Logo" class="logo">
+        <h1>Drive Park</h1>
+    </header>
+
+    <button class="menu-toggle" (click)="toggleSidebar()">☰</button>
+    <div class="main-content">
+        <aside class="sidebar" [class.hidden]="isSidebarHidden">
+            <div class="user-profile">
+                <img src="assets/vozac.png" alt="User Photo" class="profile-photo">
+                <p class="username">Username</p>
+                <p class="user-fullname">First Last</p>
+            </div>
+            <hr>
+            <nav class="nav-links">
+                <a routerLink="/update-user-data">Update user data</a>
+                <a routerLink="/waiting-list">Waiting list</a>
+                <a routerLink="/current-repairment">Current repairment</a>
+                <a routerLink="/history">History</a>
+                <a routerLink="/technical-page">Technical page</a>
+                <a routerLink="/calendar">Calendar</a>
+            </nav>
+        </aside>
+
+        <section class="content">
+            <router-outlet></router-outlet>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>Company Name</p>
+    </footer>
+</div>

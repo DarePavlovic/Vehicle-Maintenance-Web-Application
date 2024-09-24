@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
   salary:number=0;
   address:string="";
   phone:string="";
-  idVehicle:any=null;
+  licensePlate:string="";
 
   emailPattern: RegExp = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
 
@@ -96,12 +96,12 @@ export class RegisterComponent implements OnInit {
       this.slika = defaultProfilna
     }
  
-    this.idVehicle=[];
+    this.licensePlate="";
       this.userService.getUser(this.username).subscribe((us:User)=>{
         if(us==null){
           this.userService.getEmail(this.username, this.email).subscribe((use:User)=>{
             if(use==null){
-               this.userService.register(this.firstname, this.lastname, this.username, this.password, this.email,this.phone, this.address, this.slika, this.type, this.coefficient, this.salary, this.idVehicle
+               this.userService.register(this.firstname, this.lastname, this.username, this.password, this.email,this.phone, this.address, this.slika, this.type, this.coefficient, this.salary, this.licensePlate
                 ).subscribe((resp:any)=>{
                  if(resp['message']=='ok'){
                   

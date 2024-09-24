@@ -1,0 +1,67 @@
+<div class="content mat-elevation-z4 table-resp">
+            
+    <!-- <select [(ngModel)]="lastname">
+        <option *ngFor="let u of users" [ngValue]="u.lastname">{{u.username}}</option>
+    </select> -->
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Coefficient</th>
+            <th>Salary</th>
+            <th>Picture</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        <tr *ngFor="let u of users">
+            <td>{{u.username}}</td>
+            <td>{{u.firstname}}</td>
+            <td>{{u.lastname}}</td>
+            <td>{{u.address}}</td>
+            <td>{{u.phone}}</td>
+            <td>{{u.email}}</td>
+            <td>{{u.coefficient}}</td>
+            <td>{{u.salary}}</td>
+            <td><img id="profile" [src]="u.picture" style="width: 50px; height: 50px;"></td>
+            <td><button class="buttn" (click)="promena(u)">Update</button></td>
+            <td><button class="buttn">Delete</button></td>
+            </tr>
+    </table>
+
+
+
+    <div *ngIf="bo">
+        <label style="margin: 10px;">Firstname</label><input type="text" name="firstname" [(ngModel)]="firstName" ><br>
+        <label style="margin: 10px;">Lastname</label><input type="text" name="lastname" [(ngModel)]="lastName" ><br>
+        <label style="margin: 10px;">Username</label><input type="text" name="username" [(ngModel)]="username" disabled="true"><br>
+        <label style="margin: 10px;">Address</label><input type="text" name="address" [(ngModel)]="address" ><br>
+        <label style="margin: 10px;">Phone_number</label><input type="text" name="phone_number" [(ngModel)]="phone" ><br>
+        <label style="margin: 10px;">Email</label><input type="text" name="email" [(ngModel)]="email" disabled="true"><br>
+        <label style="margin: 10px;">Coefficient</label><input type="text" name="coefficient" [(ngModel)]="coefficient" ><br>
+        <label style="margin: 10px;">Salary</label><input type="text" name="salary" [(ngModel)]="salary" ><br>
+        <br>
+        <label style="margin: 10px;">Picture</label><img id="profile" [src]="picture"  style="width: 200px; height: 200px;">  <br>
+        
+        <br>
+        <input #slikaUpload type="file" (change)="slikaDodata($event)" accept="image/jpg, image/png, image/jpeg"><br>
+        <br>
+        
+        {{slikaPoruka}} Nova profilna ->
+        <br>
+        <img *ngIf="slikaSacuvana" id="profile" [src]="putdoslike()" alt="Red dot" style="width: 200px; height: 200px;" /><br>
+        <label style="margin: 10px;">Type</label>
+        <select [(ngModel)]="tip">
+            <option value="driver">Driver</option>
+            <option value="mechanic">Mechanic</option>
+            <option value="admin">Admin</option>
+        </select><br>
+
+        <!-- <input type="text" name="type" [(ngModel)]="type"><br> -->
+        
+    </div>
+    <button class="buttn" (click)="updateUser()">Update all data</button>
+</div>

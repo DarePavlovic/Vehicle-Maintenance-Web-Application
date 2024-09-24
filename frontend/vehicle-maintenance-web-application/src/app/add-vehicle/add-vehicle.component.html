@@ -1,0 +1,77 @@
+<div class="container content">
+    <p class="header">Dodaj novo vozilo</p>
+    <form name="Reg">
+        <div class="mb-3">
+            <label for="make" class="form-label">Make:</label>
+            <input type="text" class="form-control" name="make" id="make" [(ngModel)]="make" required>
+        </div>
+        <div class="mb-3">
+            <label for="model" class="form-label">Model:</label>
+            <input type="text" class="form-control" name="model" id="model" [(ngModel)]="model" required>
+        </div>
+        <div class="mb-3">
+            <label for="engine" class="form-label">Engine:</label>
+            <input type="text" class="form-control" name="engine" id="engine" [(ngModel)]="engine" required>
+        </div>
+        <div class="mb-3">
+            <label for="fuel" class="form-label">Fuel:</label>
+            <input type="text" class="form-control" name="fuel" id="fuel" [(ngModel)]="fuel" required>
+        </div>
+        <div class="mb-3">
+            <label for="yearMade" class="form-label">Year Made:</label>
+            <input type="number" class="form-control" name="yearMade" id="yearMade" [(ngModel)]="yearMade" required>
+        </div>
+        <div class="mb-3">
+            <label for="licensePlate" class="form-label">License Plate:</label>
+            <input type="text" class="form-control" name="licensePlate" id="licensePlate" [(ngModel)]="licensePlate"
+                required>
+        </div>
+        <div class="mb-3">
+            <input type="file" class="form-control" id="slikaUpload" (change)="slikaDodata($event)"
+                accept="image/jpg, image/png, image/jpeg">
+            {{slikaPoruka}}
+            <img *ngIf="slikaSacuvana" class="mt-2" id="profile" [src]="putdoslike()" alt="Profile picture" />
+        </div>
+        <div class="mb-3">
+            <label for="mileage" class="form-label">Mileage:</label>
+            <input type="number" class="form-control" name="mileage" id="mileage" [(ngModel)]="mileage" required>
+        </div>
+        <div class="mb-3">
+            <label for="dateTire" class="form-label">Date Tire:</label>
+            <input type="date" class="form-control" name="dateTire" id="dateTire" [(ngModel)]="dateTire" required>
+        </div>
+        <div class="mb-3">
+            <label for="dateRegistration" class="form-label">Date Registration:</label>
+            <input type="date" class="form-control" name="dateRegistration" id="dateRegistration"
+                [(ngModel)]="dateRegistration" required>
+        </div>
+        <div class="mb-3">
+            <label for="dateSmallServis" class="form-label">Date Small Service:</label>
+            <input type="date" class="form-control" name="dateSmallServis" id="dateSmallServis"
+                [(ngModel)]="dateSmallServis" required>
+        </div>
+        <div class="mb-3">
+            <label for="dateBigServis" class="form-label">Date Big Service:</label>
+            <input type="date" class="form-control" name="dateBigServis" id="dateBigServis" [(ngModel)]="dateBigServis"
+                required>
+        </div>
+        <div class="mb-3">
+            <label for="dateFirstAid" class="form-label">Date First Aid:</label>
+            <input type="date" class="form-control" name="dateFirstAid" id="dateFirstAid" [(ngModel)]="dateFirstAid"
+                required>
+        </div>
+        <div class="mb-3">
+            <label for="dateFireExtinguisher" class="form-label">Date Fire Extinguisher:</label>
+            <input type="date" class="form-control" name="dateFireExtinguisher" id="dateFireExtinguisher"
+                [(ngModel)]="dateFireExtinguisher" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="vehicleValue" class="form-label">Vehicle value:</label>
+            <input type="number" class="form-control" name="vehicleValue" id="vehicleValue" [(ngModel)]="vehicleValue" required>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary" (click)="dodajVozilo()">Dodaj vozilo</button>
+        </div>
+    </form>
+</div>

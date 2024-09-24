@@ -1,0 +1,49 @@
+
+<div class="container mt-4">
+    <h3>Car Repair Details</h3>
+    <form name="repair">
+      <!-- Description of the car defect -->
+      <div class="mb-3">
+        <label for="carRepairDescription" class="form-label">Description of the Car Repair</label>
+        <textarea class="form-control" id="carRepairDescription" name="carRepairDescription" [(ngModel)]="repairDescription" rows="3" placeholder="Describe the car repairment..."></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="carDefectDescription" class="form-label">Description of the Car Defect</label>
+        <textarea class="form-control" id="carDefectDescription" name="carDefectDescription" [(ngModel)]="defectDescription" rows="3" placeholder="Describe the car defect..."></textarea>
+      </div>
+  
+      <!-- Picture Before -->
+      <div class="mb-3">
+        <label for="pictureBefore" class="form-label">Picture of car defect</label>
+        <input type="file" class="form-control" name="pictureBefore" id="pictureBefore" (change)="slikaDodata($event)"
+        accept="image/jpg, image/png, image/jpeg">
+        {{slikaPoruka}}
+        <img *ngIf="slikaSacuvana" class="mt-2" id="kvar" [src]="putdoslike()" alt="kvar" style=" align-self: center; width: 500px; height: 300px;" />
+      </div>
+  
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" (click)="submitDefect()">Submit</button>
+    </form>
+  </div>
+<br>
+  <div class="content mat-elevation-z4 table-resp">
+            
+    <!-- <select [(ngModel)]="lastname">
+        <option *ngFor="let u of users" [ngValue]="u.lastname">{{u.username}}</option>
+    </select> -->
+    <table>
+        <tr>
+            <th>Defect Number</th>
+            <th>Defect Details</th>
+            <th>Picture before</th>
+        </tr>
+        <tr *ngFor="let d of defectList">
+            <td>{{d.id}}</td>
+            <td>{{d.defectDescription}}</td>
+            <td><img id="profile" [src]="d.pictureBefore" style="width: 50px; height: 50px;"></td>
+            
+            </tr>
+    </table>
+    <br>
+    <td><button class="buttn" (click)="salji()">Send to mechanic</button></td>
+</div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-driver',
@@ -7,42 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DriverComponent implements OnInit {
 
+  @ViewChild('sidebarMenu') sidebarMenu!: ElementRef;
   constructor() { }
 
   ngOnInit(): void {
-    //this.user=JSON.parse(localStorage.getItem('ulogovan'));
+    // const userData = localStorage.getItem('ulogovan');
+    // if (userData) {
+    //   this.user = JSON.parse(userData);
+    // }
   }
 
-  driver = {
-    profileImage: 'assets/driver.jpg',
-    name: 'John Doe',
-    rating: 4.8,
-    bio: '5 years of driving experience. Speaks English and Spanish.',
-    phone: '+1234567890',
-    email: 'john.doe@example.com',
-    licenseNumber: 'AB1234567',
-    licenseExpiry: '12/2025'
-  };
-
-  car = {
-    image: 'assets/car.jpg',
-    make: 'Toyota',
-    model: 'Prius',
-    year: 2020,
-    licensePlate: 'XYZ 1234',
-    color: 'Blue',
-    fuelType: 'Hybrid',
-    type: 'Sedan',
-    mileage: 35000,
-    features: ['Air Conditioning', 'Leather Seats', 'Music System', 'Child Seat']
-  };
-
-  bookRide() {
-    alert('Ride booked with ' + this.driver.name);
+  //user:User| undefined;
+  
+  toggleSidebar() {
+    this.sidebarMenu.nativeElement.classList.toggle('show');
   }
 
-  reportIssue() {
-    alert('Report an issue with ' + this.driver.name);
+  closeSidebar() {
+    this.sidebarMenu.nativeElement.classList.remove('show');
   }
+
 
 }

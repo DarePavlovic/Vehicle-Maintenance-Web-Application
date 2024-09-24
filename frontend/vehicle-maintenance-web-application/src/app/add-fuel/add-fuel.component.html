@@ -1,0 +1,43 @@
+<div class="fuel-tracker">
+    <h2>Unos podataka o potrošnji goriva</h2>
+
+    <form (ngSubmit)="addEntry()">
+        <label for="liters">Litara sipano:</label>
+        <input type="number" id="liters" [(ngModel)]="liters" name="liters" required />
+
+        <label for="mileage">Nova kilometraža:</label>
+        <input type="number" id="mileage" [(ngModel)]="mileage" name="mileage" value="initialMileage" required />
+
+        <button type="submit">Dodaj unos</button>
+    </form>
+
+    <h3>Statistika</h3>
+    <p>Prosečna potrošnja goriva za ovaj mesec: {{ averageConsumption | number:'1.2-2' }} L/100km </p>
+    <p>Prosečna potrošnja goriva generalno: {{ totalFuel | number:'1.2-2' }} L/100km </p>
+    <p>Ukupno pređeno kilometara ovog meseca: {{ monthlyDistance | number:'1.2-2' }} km</p>
+    <p>Ukupno pređeno kilometara: {{ totalDistance | number:'1.2-2' }} km</p>
+
+    <h3>Trenutna cena goriva u Srbiji</h3>
+    <!-- <p *ngIf="fuelPrice !== null">Cena goriva minimalna: {{ fuelPrice?.minPrice| number:'1.2-2' }} RSD/L</p>
+    <p *ngIf="fuelPrice !== null">Cena goriva maksimalna: {{ fuelPrice?.maxPrice| number:'1.2-2' }} RSD/L</p> -->
+    <!-- <p>Cena goriva : {{ myPrice| number:'1.2-2' }} RSD/L</p> -->
+
+    <h3>Fuel Prices</h3>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Vrsta goriva vozila</th>
+                <th scope="col">Minimum Price (RSD)</th>
+                <th scope="col">Maximum Price (RSD)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let fuelPrice of fuelPrices">
+                <td>{{ fuelPrice.category }}</td>
+                <td>{{ fuelPrice.minPrice | number: '1.2-2' }}</td>
+                <td>{{ fuelPrice.maxPrice | number: '1.2-2' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
