@@ -135,4 +135,25 @@ export class VehicleController{
     }
 
     
+    fillFuel(req: express.Request, res: express.Response): void {
+        let id = new mongoose.Types.ObjectId(req.body.id);
+        let mileage = req.body.mileage;
+        let mileageMonth = req.body.mileageMonth;
+        let mileageTillServis = req.body.mileageTillServis;
+        let fuelConsumptionMonth = req.body.fuelConsumptionMonth;
+        let consumptionMonth = req.body.consumptionMonth;
+        let consumptionGeneral = req.body.consumptionGeneral;
+        let dateFuelFill = req.body.dateFuelFill;
+        let priceFuelMonth = req.body.priceFuelMonth;
+        VehicleModel.updateOne({'_id':id}, {$set:{'mileage':mileage,'mileageMonth':mileageMonth,
+        'mileageTillServis':mileageTillServis,'fuelConsumptionMonth':fuelConsumptionMonth,'consumptionMonth':consumptionMonth,
+        'consumptionGeneral':consumptionGeneral,'dateFuelFill':dateFuelFill,
+        'priceFuelMonth':priceFuelMonth}}).then((err)=>{
+            if(err) console.log(err);
+            else{
+                res.json({'message':'ok'})
+            }
+        })
+    }
+
 }

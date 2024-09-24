@@ -42,6 +42,10 @@ export class VehicleService {
     return this.http.post<Vehicle>(`${this.uri}/getVehicleByUser`, {idUser});
   }
 
+  fillFuel(data:any){
+    return this.http.post<any>(`${this.uri}/fillFuel`, data);
+  }
+
   
   
 

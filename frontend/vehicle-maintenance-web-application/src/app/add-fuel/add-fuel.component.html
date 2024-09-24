@@ -6,16 +6,16 @@
         <input type="number" id="liters" [(ngModel)]="liters" name="liters" required />
 
         <label for="mileage">Nova kilometraža:</label>
-        <input type="number" id="mileage" [(ngModel)]="mileage" name="mileage" value="initialMileage" required />
+        <input type="number" id="mileage" [(ngModel)]="mileageEntry" name="mileage" value="initialMileage" required />
 
-        <button type="submit">Dodaj unos</button>
+        <button type="submit" (click)="addEntry()">Dodaj unos</button>
     </form>
 
     <h3>Statistika</h3>
     <p>Prosečna potrošnja goriva za ovaj mesec: {{ averageConsumption | number:'1.2-2' }} L/100km </p>
-    <p>Prosečna potrošnja goriva generalno: {{ totalFuel | number:'1.2-2' }} L/100km </p>
-    <p>Ukupno pređeno kilometara ovog meseca: {{ monthlyDistance | number:'1.2-2' }} km</p>
-    <p>Ukupno pređeno kilometara: {{ totalDistance | number:'1.2-2' }} km</p>
+    <p>Prosečna potrošnja goriva generalno: {{ consumptionGeneral | number:'1.2-2' }} L/100km </p>
+    <p>Ukupno pređeno kilometara ovog meseca: {{ milageMonth | number:'1.2-2' }} km</p>
+    <p>Ukupno pređeno kilometara: {{ milage | number:'1.2-2' }} km</p>
 
     <h3>Trenutna cena goriva u Srbiji</h3>
     <!-- <p *ngIf="fuelPrice !== null">Cena goriva minimalna: {{ fuelPrice?.minPrice| number:'1.2-2' }} RSD/L</p>

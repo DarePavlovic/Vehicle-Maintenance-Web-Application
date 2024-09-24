@@ -33,5 +33,9 @@ vehicleRouter.route('/getVehicleByUser').post(
     (req,res)=> new VehicleController().getVehicleByUser(req,res)
 )
 
+vehicleRouter.route('/fillFuel').post(
+    (req,res)=> new VehicleController().fillFuel(req,res)
+)
+
 
 export default vehicleRouter;

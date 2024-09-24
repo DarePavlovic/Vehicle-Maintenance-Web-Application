@@ -53,15 +53,17 @@ export class AddFuelComponent implements OnInit {
       if (this.user_id) {
         this.vehicleService.getVehicleByUser(this.user_id).subscribe((vehicle: Vehicle) => {
             this.vehicle = vehicle;
-            this.initialMileage = this.vehicle.mileage;
-            this.totalFuel = this.vehicle.fuelConsumptionMonth;
-            this.totalDistance = this.vehicle.mileage;
-            this.monthlyDistance = this.vehicle.mileageMonth
-            this.fuelConsumptionMonth = this.vehicle.consumptionMonth;
+            this.milage = this.vehicle.mileage;
+            this.milageMonth = this.vehicle.mileageMonth;
+            this.mileageTillServis = this.vehicle.mileageTillServis;
+            this.fuelConsumptionMonth = this.vehicle.fuelConsumptionMonth;
+            this.consumptionMonth = this.vehicle.consumptionMonth;
+            this.consumptionGeneral = this.vehicle.consumptionGeneral;
+            this.priceFuelMonth = this.vehicle.priceFuelMonth;
             this.selectedFuelType = this.fuelTypes.find(fuelType => fuelType.name === this.vehicle?.fuel);
             this.fuelPrice = this.fuelPrices.find(fuelPrice => fuelPrice.category === this.selectedFuelType?.name);
             this.myPrice = this.fuelPrice?.minPrice || 0;
-            this.priceFuelMonth = this.vehicle.priceFuelMonth;
+            
           });
        
       }
@@ -71,71 +73,90 @@ export class AddFuelComponent implements OnInit {
   }
 
   fuelPrice: FuelPrice | undefined;
-  myPrice:number = 0;
+   myPrice:number = 0;
   vehicle: Vehicle | undefined;
   user_id: string = '';
-  idVehicle: string = '';
   entries: FuelEntry[] = [];
   liters: number = 0;
-  mileage: number = 0;
-  monthlyDistance: number = 0;
+  mileageEntry: number = 0;
+
+  milage: number = 0;
+  milageMonth: number = 0;
   mileageTillServis: number = 0;
+
   fuelConsumptionMonth: number = 0;
-  fuelConsumption: number = 0;
-  totalFuel: number = 0;
-  totalDistance: number = 0;//predjeno km za mesec dana
-  initialMileage: number = 0;
+  consumptionMonth: number = 0;
+  consumptionGeneral: number = 0;
   priceFuelMonth: number = 0;
   
   addEntry() {
-    
-    console.log(this.initialMileage, this.mileage);
-    this.calculateStats();
-
-    
     if(!this.isCurrentMonth()){
-      this.monthlyDistance=0;
+      this.milageMonth=0;
       this.priceFuelMonth=0;
       this.fuelConsumptionMonth=0;
     }
+    console.log(this.milage, this.mileageEntry);
+    if(this.mileageEntry < this.milage){
+      this.mileageEntry+=this.milage;
+    }
 
+    this.calculateStats();
+
+    const data = {
+      id: this.vehicle?._id || '',
+      mileage: this.milage,
+      mileageMonth: this.milageMonth,
+      mileageTillServis: this.mileageTillServis,
+      fuelConsumptionMonth: this.fuelConsumptionMonth,
+      consumptionMonth: this.consumptionMonth,
+      consumptionGeneral: this.consumptionGeneral,
+      dateFuelFill: new Date(), // Assuming the current date is the fill date
+      priceFuelMonth: this.priceFuelMonth
+    };
+
+    this.vehicleService.fillFuel(data).subscribe((resp:any) => {
+      if(resp.message === 'ok'){
+        console.log('Fuel data saved successfully');
+      }else{
+        console.error('Error saving fuel data:', resp);
+      }
+    });
+    
     // Reset input values
     this.liters = 0;
-    this.mileage = 0;
+    this.mileageEntry = 0;
   }
 
   calculateStats() {
-    this.totalFuel = this.entries.reduce((sum, entry) => sum + entry.liters, 0);
-    if (this.entries.length > 1) {
-      this.totalDistance = this.entries[this.entries.length - 1].mileage - this.initialMileage;
+    this.milageMonth +=this.mileageEntry-this.milage;
+    this.fuelConsumptionMonth += this.liters;
+    this.priceFuelMonth += this.liters * this.myPrice;
+    this.consumptionMonth = this.fuelConsumptionMonth / this.milageMonth * 100;
+    if(this.consumptionGeneral>0){
+      this.consumptionGeneral=this.consumptionMonth;
     }
-
-    const currentMonthEntries = this.entries.filter(entry => this.isCurrentMonth());
-    if (currentMonthEntries.length > 1) {
-      this.monthlyDistance = currentMonthEntries[currentMonthEntries.length - 1].mileage - currentMonthEntries[0].mileage;
+    if(this.fuelConsumptionMonth>0){
+      this.consumptionGeneral = (this.consumptionGeneral +this.consumptionMonth)/2;
     }
+    
+    this.mileageTillServis -= this.mileageEntry-this.milage;
+    this.milage = this.mileageEntry;
+    
   }
 
   get averageConsumption() {
-    return this.monthlyDistance > 0 ? (this.totalFuel / this.monthlyDistance) * 100 : 0;
+    return this.milageMonth > 0 ? (this.fuelConsumptionMonth / this.milageMonth) * 100 : 0;
   }
 
   private isCurrentMonth(): boolean {
     if(this.vehicle){
-      const entryDate = this.vehicle.dateFuelFill; //  datum proslog unosa
+      const entryDate = new Date(this.vehicle.dateFuelFill); //  datum proslog unosa
       //postavimo datum unosa na danasnji datum
       const now = new Date();
       return entryDate.getMonth() === now.getMonth() && entryDate.getFullYear() === now.getFullYear();
     }
     return false;
   }
-
-
-
-
-
-
-
 
 
 
