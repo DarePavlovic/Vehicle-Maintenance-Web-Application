@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { User } from '../models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-driver',
@@ -9,7 +10,7 @@ import { User } from '../models/User';
 export class DriverComponent implements OnInit {
 
   @ViewChild('sidebarMenu') sidebarMenu!: ElementRef;
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     // const userData = localStorage.getItem('ulogovan');
@@ -28,5 +29,9 @@ export class DriverComponent implements OnInit {
     this.sidebarMenu.nativeElement.classList.remove('show');
   }
 
+  odjava(){
+    localStorage.removeItem('ulogovan')
+    this.router.navigate(['login']);
+  }
 
 }

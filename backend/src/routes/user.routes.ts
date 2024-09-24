@@ -35,5 +35,17 @@ userRouter.route('/getVehicle').post(
     (req,res)=> new UserController().getVehicle(req,res)
 )
 
+userRouter.route('/getPassword').post(
+    (req,res)=> new UserController().getPassword(req,res)
+)
+
+userRouter.route('/changePassword').post(
+    (req,res)=> new UserController().changePassword(req,res)
+)
+
+userRouter.route('/updateProfile').post(
+    (req,res)=> new UserController().updateProfile(req,res)
+)
+
 
 export default userRouter;

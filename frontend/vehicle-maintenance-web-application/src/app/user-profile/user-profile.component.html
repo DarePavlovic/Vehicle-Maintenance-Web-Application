@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header bg-primary text-white">
+      <h4 class="card-title">{{ user.firstname }} {{ user.lastname }} - {{ user.username }}</h4>
+    </div>
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <div class="profile-image-wrapper">
+          <img [src]="user.picture || 'assets/vozac.png'" class="card-img img-fluid" alt="User Image">
+        </div>
+        <div *ngIf="bo">
+            
+            <label style="margin: 5%; font-size: 1.2rem">Change picture?</label>
+            
+            <input #slikaUpload type="file" (change)="slikaDodata($event)" accept="image/jpg, image/png, image/jpeg" class="form-control-file">
+            <br>
+            {{slikaPoruka}} Nova profilna ->
+            <img *ngIf="slikaSacuvana" id="profile" [src]="putdoslike()" alt="New Profile Picture" class="img-fluid"><br>
+          </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">User Details</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>First Name:</strong> {{ user.firstname }}</li>
+            <li class="list-group-item"><strong>Last Name:</strong> {{ user.lastname }}</li>
+            <li class="list-group-item"><strong>Username:</strong> {{ user.username }}</li>
+            <li class="list-group-item"><strong>Email:</strong> <input type="email" class="form-control" [(ngModel)]="user.email" [readonly]="!bo"></li>
+            <li class="list-group-item"><strong>Phone:</strong> <input type="text" class="form-control" [(ngModel)]="user.phone" [readonly]="!bo"></li>
+            <li class="list-group-item"><strong>Address:</strong> <input type="text" class="form-control" [(ngModel)]="user.address" [readonly]="!bo"></li>
+            <!-- <li class="list-group-item"><strong>Picture URL:</strong> <input type="text" class="form-control" [(ngModel)]="user.picture" [readonly]="!bo"></li> -->
+            <li class="list-group-item"><strong>Coefficient:</strong> {{ user.coefficient }}</li>
+            <li class="list-group-item"><strong>Salary:</strong> {{ user.salary | currency }}</li>
+          </ul>
+          
+          <button type="button" class="btn btn-primary mt-3" (click)="promena()" *ngIf="!bo">Azuriraj podatke</button>
+          <button type="button" class="btn btn-primary mt-3" (click)="updateUser()" *ngIf="bo">Update all data</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

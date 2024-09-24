@@ -12,6 +12,8 @@ import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { SetVehicleComponent } from './set-vehicle/set-vehicle.component';
 import { AddFuelComponent } from './add-fuel/add-fuel.component';
 import { VehicleProfileComponent } from './vehicle-profile/vehicle-profile.component';
+import { ChangePassComponent } from './change-pass/change-pass.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {path:"", component:LoginComponent},
@@ -31,7 +33,9 @@ const routes: Routes = [
       {path:"profile", component:DriverProfileComponent},
       {path:"addRepair", component:AddRepairsComponent},
       {path:"addFuel",component:AddFuelComponent},
-      {path:"carDetail",component:VehicleProfileComponent}
+      {path:"carDetail",component:VehicleProfileComponent},
+      {path:"changePassword",component:ChangePassComponent},
+      {path:"userProfile", component:UserProfileComponent}
     ]
   },
   {path:"**", component:LoginComponent}

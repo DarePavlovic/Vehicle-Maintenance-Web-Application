@@ -1,0 +1,9 @@
+
+<div style="font-size: 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    Unesi postojecu lozinku: <input type="password" name="password" [(ngModel)]="pass1"><br>
+    Unesi novu lozinku: <input type="password" name="passwordNew" [(ngModel)]="pass2"><br>
+    Molim Vas unesite je ponovo <input type="password" name="passwordN" [(ngModel)]="pass3"><br>
+    <button class="buttn" (click)="promeniLozinku()">Promeni Lozinku</button>
+    <br>
+    <span style="color: red;">{{message}}</span>
+    </div>

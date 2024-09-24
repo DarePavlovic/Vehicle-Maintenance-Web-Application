@@ -44,12 +44,10 @@ export class UserService {
     return this.http.post<User>(`${this.uri}/register`, data);
   }
 
-  getUser(username:string){
-    const data = {
-      username:username
-    }
+  getUser(idUser:string): Observable<User> {
 
-    return this.http.post<User>(`${this.uri}/getUser`,data);
+
+    return this.http.post<User>(`${this.uri}/getUser`,{idUser});
   }
   getEmail(username:string, email:string){
     const data = {
@@ -68,6 +66,7 @@ export class UserService {
       } )
     );
   }
+
 
   updateUser(id:string,first: string, last: string, userN: string, phone:string, address:string, pict: string, type: string, coefficient: number, salary: number) {
     const data = {
@@ -94,4 +93,23 @@ export class UserService {
     return this.http.post<string>(`${this.uri}/getVehicle`, {idUser});
   }
 
+  getPassword(idUser: string): Observable<string> {
+    return this.http.post<string>(`${this.uri}/getPassword`, {idUser});
+  }
+
+  changePassword(idUser: string, pass: string): Observable<any> {
+    return this.http.post<any>(`${this.uri}/changePassword`, {idUser, pass});
+  }
+
+  updateProfile(idUser:string,email:string,phone:string, address:string, pict: string): Observable<any> {
+    const data = {
+      idUser: idUser,
+      email: email,
+      phone:phone,
+      address: address,
+      picture: pict
+    }
+
+    return this.http.post<any>(`${this.uri}/updateProfile`, data);
+  }
 }
