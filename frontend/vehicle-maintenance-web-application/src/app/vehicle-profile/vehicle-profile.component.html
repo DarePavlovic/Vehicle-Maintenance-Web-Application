@@ -1,0 +1,56 @@
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h4 class="card-title">{{ vehicle.model }} - {{ vehicle.licensePlate }}</h4>
+      </div>
+      <div class="row no-gutters">
+        <div class="col-md-4">
+            <div class="car-image-wrapper">
+              <img [src]="vehicle.picture || 'assets/car_picture.png'" class="card-img img-fluid" alt="Car Image">
+            </div>
+          </div>
+          
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Vehicle Details</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Engine:</strong> {{ vehicle.engine }}</li>
+              <li class="list-group-item"><strong>Fuel Type:</strong> {{ vehicle.fuel }}</li>
+              <li class="list-group-item"><strong>Year Made:</strong> {{ vehicle.yearMade }}</li>
+              <li class="list-group-item"><strong>Mileage:</strong> {{ vehicle.mileage }} km</li>
+              <li class="list-group-item"><strong>Mileage This Month:</strong> {{ vehicle.mileageMonth }} km</li>
+              <li class="list-group-item"><strong>Next Service Mileage:</strong> {{ vehicle.mileageTillServis }} km</li>
+              <li class="list-group-item"><strong>Status:</strong> {{ vehicle.status }}</li>
+            </ul>
+            
+            <h5 class="card-title mt-4">Service & Maintenance</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Last Tire Change:</strong> {{ vehicle.dateTire | date: 'dd/MM/yyyy' }}</li>
+              <li class="list-group-item"><strong>Last Registration:</strong> {{ vehicle.dateRegistration | date: 'dd/MM/yyyy' }}</li>
+              <li class="list-group-item"><strong>Last Small Service:</strong> {{ vehicle.dateSmallServis | date: 'dd/MM/yyyy' }}</li>
+              <li class="list-group-item"><strong>Last Big Service:</strong> {{ vehicle.dateBigServis | date: 'dd/MM/yyyy' }}</li>
+              <li class="list-group-item"><strong>First Aid Kit Check:</strong> {{ vehicle.dateFirstAid | date: 'dd/MM/yyyy' }}</li>
+              <li class="list-group-item"><strong>Fire Extinguisher Check:</strong> {{ vehicle.dateFireExtinguisher | date: 'dd/MM/yyyy' }}</li>
+            </ul>
+  
+            <h5 class="card-title mt-4">Fuel Consumption</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Fuel Consumption This Month:</strong> {{ vehicle.fuelConsumptionMonth }} L</li>
+              <li class="list-group-item"><strong>Total Consumption This Month:</strong> {{ vehicle.consumptionMonth }} L</li>
+              <li class="list-group-item"><strong>General Consumption:</strong> {{ vehicle.consumptionGeneral }} L</li>
+              <li class="list-group-item"><strong>Fuel Cost This Month:</strong> {{ vehicle.priceFuelMonth + " dinara"}}</li>
+            </ul>
+  
+            <h5 class="card-title mt-4">Costs & Value</h5>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><strong>Maintenance Cost This Month:</strong> {{ vehicle.priceMainainanceMonth + " dinara" }}</li>
+              <li class="list-group-item"><strong>Total Maintenance Cost:</strong> {{ vehicle.priceMainainanceGeneral + " dinara" }}</li>
+              <li class="list-group-item"><strong>Registration Cost:</strong> {{ vehicle.priceRegistration + " dinara" }}</li>
+              <li class="list-group-item"><strong>Vehicle Value:</strong> {{ vehicle.vehicleValue | currency }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

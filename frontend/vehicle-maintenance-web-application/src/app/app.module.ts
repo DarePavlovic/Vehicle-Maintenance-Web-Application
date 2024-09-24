@@ -20,6 +20,7 @@ import { DefectComponent } from './defect/defect.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { SetVehicleComponent } from './set-vehicle/set-vehicle.component';
 import { AddFuelComponent } from './add-fuel/add-fuel.component';
+import { VehicleProfileComponent } from './vehicle-profile/vehicle-profile.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddFuelComponent } from './add-fuel/add-fuel.component';
     DefectComponent,
     AddVehicleComponent,
     SetVehicleComponent,
-    AddFuelComponent
+    AddFuelComponent,
+    VehicleProfileComponent
   ],
   imports: [
     BrowserModule,

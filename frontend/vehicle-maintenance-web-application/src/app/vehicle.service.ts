@@ -37,12 +37,12 @@ export class VehicleService {
     return this.http.post<any>(`${this.uri}/deleteVehicle`, idVehicle);
   }
 
-  getVehicleByUser(idUser:string) {
+  getVehicleByUser(idUser:string):Observable<Vehicle>{ 
 
     return this.http.post<Vehicle>(`${this.uri}/getVehicleByUser`, {idUser});
   }
 
-  fillFuel(data:any){
+  fillFuel(data:any):Observable<any>{
     return this.http.post<any>(`${this.uri}/fillFuel`, data);
   }
 
