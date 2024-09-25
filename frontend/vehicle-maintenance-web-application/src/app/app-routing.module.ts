@@ -45,13 +45,13 @@ const routes: Routes = [
     children:[
       {path:"waitingList", component:WaitingListComponent},
       {path:"repairment", component:RepairmentComponent},
-      {path:"history", component:HistoryComponent}
+      {path:"history", component:HistoryComponent},
+      {path:"userProfile", component:UserProfileComponent}
     ]
   },
   {path:"driver", component:DriverComponent,
     children:[
       {path:"updateUser", component:UpdateUserComponent},
-      {path:"profile", component:DriverProfileComponent},
       {path:"addRepair", component:AddRepairsComponent},
       {path:"addFuel",component:AddFuelComponent},
       {path:"carDetail",component:VehicleProfileComponent},

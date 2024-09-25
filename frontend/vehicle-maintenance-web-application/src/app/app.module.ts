@@ -30,6 +30,7 @@ import { RepairmentComponent } from './repairment/repairment.component';
 import { HistoryComponent } from './history/history.component';
 import { PaymentsHistoryComponent } from './payments-history/payments-history.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { EarningsComponent } from './earnings/earnings.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
     RepairmentComponent,
     HistoryComponent,
     PaymentsHistoryComponent,
-    HomeAdminComponent
+    HomeAdminComponent,
+    EarningsComponent
   ],
   imports: [
     BrowserModule,
