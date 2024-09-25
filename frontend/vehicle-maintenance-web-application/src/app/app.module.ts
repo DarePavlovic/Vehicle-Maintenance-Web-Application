@@ -29,6 +29,7 @@ import { WaitingListComponent } from './waiting-list/waiting-list.component';
 import { RepairmentComponent } from './repairment/repairment.component';
 import { HistoryComponent } from './history/history.component';
 import { PaymentsHistoryComponent } from './payments-history/payments-history.component';
+import { HomeAdminComponent } from './home-admin/home-admin.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { PaymentsHistoryComponent } from './payments-history/payments-history.co
     WaitingListComponent,
     RepairmentComponent,
     HistoryComponent,
-    PaymentsHistoryComponent
+    PaymentsHistoryComponent,
+    HomeAdminComponent
   ],
   imports: [
     BrowserModule,

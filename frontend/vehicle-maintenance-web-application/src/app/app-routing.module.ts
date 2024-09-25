@@ -20,12 +20,14 @@ import { WaitingListComponent } from './waiting-list/waiting-list.component';
 import { RepairmentComponent } from './repairment/repairment.component';
 import { HistoryComponent } from './history/history.component';
 import { PaymentsHistoryComponent } from './payments-history/payments-history.component';
+import { HomeAdminComponent } from './home-admin/home-admin.component';
 
 const routes: Routes = [
   {path:"", component:LoginComponent},
   {path:"login", component:LoginComponent},
   {path:"admin", component:AdminComponent,
     children:[
+      {path:"home", component:HomeAdminComponent},
       {path:"register", component:RegisterComponent},
       {path:"updateUser", component:UpdateUserComponent},
       {path:"addVehicle", component:AddVehicleComponent},
@@ -34,7 +36,9 @@ const routes: Routes = [
       {path:"allVehicle", component:AllVehiclesComponent},
       {path:"carDetail",component:VehicleProfileComponent},
       {path:"paymentHistory", component:PaymentsHistoryComponent},
-      {path:"history", component:HistoryComponent}
+      {path:"history", component:HistoryComponent},
+      {path:"**",component:HomeAdminComponent}
+
     ]
   },
   {path:"mechanic", component:MechanicComponent,
