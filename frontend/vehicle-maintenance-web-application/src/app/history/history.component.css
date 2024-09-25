@@ -1,0 +1,60 @@
+#heading{
+    text-align: center;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    gap: 4%
+}
+
+#repairsContainer{
+    background-color: #6ba6e6;
+    color: white;
+}
+
+.defectElements{
+    margin: 2%;
+    background-color: white;
+    color: #6ba6e6;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    gap: 4%
+}
+
+.flex-center{
+    justify-content: space-around;
+}
+
+.right-picture{
+    width: 48%;
+    max-height: 30vw;
+}
+
+.right-picture img{
+    width: 150px;
+}
+
+.left-picture{
+    width: 48%;
+    max-height: 30vw;
+}
+
+.left-picture img{
+    width: 150px;
+}
+
+.left-section, .right-section{
+    width: 48%;
+}
+
+.rowpadding{
+    padding: 2%;
+}
+
+.repairement-item{
+    margin: 1%;
+}

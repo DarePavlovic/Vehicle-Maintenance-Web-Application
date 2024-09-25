@@ -1,0 +1,77 @@
+<div class="container mt-8">
+    <div class="card">
+        <div class="card-header text-center">
+            <h3>Istorija popravki</h3>
+        </div>
+        <div class="card-body">
+
+            <div class="row table-headings">
+                <div class="col-md-3">
+                    <p><strong>Opis popravke:</strong></p>
+                </div>
+                <div class="col-md-3">
+                    <p><strong>Vozilo:</strong></p>
+                </div>
+                <div class="col-md-3">
+                    <p><strong>Datum:</strong></p>
+                </div>
+                <div class="col-md-3">
+                    <p><strong>Cena:</strong></p>
+                </div>
+
+                <div id = "repairsContainer" *ngFor="let repair of repairs; let i = index" class="col-md-11 border rounded repairement-item" [ngClass]="{ 'bg-blue': i % 2 !== 0 }">
+                    <div class="row rowpadding">
+                        <div class="col-md-3">
+                            <p (click) = "filterRepairs(i)"> <b>{{ repair.description }} </b></p>
+                        </div>
+                        <div class="col-md-3">
+                            <p> {{ repair.idVehicle }}</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p> {{ repair.date | date:'mediumDate' }}</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p> {{ repair.price + "din" }}</p>
+                        </div>
+                        <br />
+                        
+                    </div>
+                    <div class="defectsContainers" style="display: none;">
+                        <div *ngFor="let defect of defectList; let j = index" class="mb-3 p-3 border rounded defect defectElements">
+                            <div class="fullDescription col-md-12">
+                                <p><b>KVAR {{j + 1}}: {{ defect.description }}</b></p>
+                                <hr/>
+                                <div class="flex-row flex-center">
+                                    <div class="left-picture">
+                                        <p>Slika pre:</p>
+                                        <br>
+                                        <img [src]="defect.pictureBefore" class="card-img img-fluid" alt="Slika pre">
+                                    </div>
+                                    <div class="right-picture">
+                                        <p>Slika posle:</p>
+                                        <img [src]="defect.pictureAfter" class="card-img img-fluid" alt="Slika posle">
+                                    </div>
+                                    
+                                </div>
+                                <br />
+                                <div>
+                                    <div class="flex-row">
+                                        <b>Cena ruke:</b>
+                                        <p>{{defect.mechanicFee}}</p>
+                                        <b>Cena delovi:</b>
+                                        <p>{{defect.priceParts}}</p>
+                                        <b>Cena ukupno:</b>
+                                        <p>{{defect.totalPrice}}</p>
+                                    </div>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
