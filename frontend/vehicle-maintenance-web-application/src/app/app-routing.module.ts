@@ -24,6 +24,7 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { EarningsComponent } from './earnings/earnings.component';
 import { HomeDriverComponent } from './home-driver/home-driver.component';
 import { EarningsMechanicComponent } from './earnings-mechanic/earnings-mechanic.component';
+import { ReportExpensesComponent } from './report-expenses/report-expenses.component';
 
 const routes: Routes = [
   {path:"", component:LoginComponent},
@@ -63,6 +64,7 @@ const routes: Routes = [
       {path:"changePassword",component:ChangePassComponent},
       {path:"userProfile", component:UserProfileComponent},
       {path:"earnings", component:EarningsComponent},
+      {path:"reportExpenses", component:ReportExpensesComponent},
       {path:"**",component:HomeDriverComponent}
     ]
   },

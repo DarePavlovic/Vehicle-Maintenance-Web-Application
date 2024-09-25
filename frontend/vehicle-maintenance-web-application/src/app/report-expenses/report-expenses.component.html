@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white">
+        <h4 class="mb-0">Expenses Report</h4>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Expense Type</label>
+            <div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="kazna" name="expenseType" value="kazna" checked/>
+                <label class="form-check-label" for="kazna">Kazna</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="usluga" name="expenseType" value="usluga" />
+                <label class="form-check-label" for="usluga">Usluga</label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" id="description" placeholder="Enter description of the expenses" />
+          </div>
+  
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" placeholder="Enter cost of expenses" />
+          </div>
+  
+          <button type="submit" class="btn btn-success">Submit Report</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  

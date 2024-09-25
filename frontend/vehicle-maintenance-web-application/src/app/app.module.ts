@@ -33,6 +33,7 @@ import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { EarningsComponent } from './earnings/earnings.component';
 import { HomeDriverComponent } from './home-driver/home-driver.component';
 import { EarningsMechanicComponent } from './earnings-mechanic/earnings-mechanic.component';
+import { ReportExpensesComponent } from './report-expenses/report-expenses.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { EarningsMechanicComponent } from './earnings-mechanic/earnings-mechanic
     HomeAdminComponent,
     EarningsComponent,
     HomeDriverComponent,
-    EarningsMechanicComponent
+    EarningsMechanicComponent,
+    ReportExpensesComponent
   ],
   imports: [
     BrowserModule,
