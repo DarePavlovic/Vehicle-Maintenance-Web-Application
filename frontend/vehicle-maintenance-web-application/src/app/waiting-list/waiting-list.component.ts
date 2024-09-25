@@ -41,6 +41,7 @@ export class WaitingListComponent implements OnInit {
     let p = localStorage.getItem('currentRepairment');
     console.log(p);
     if (p== null) {
+      console.log(repairment._id);
       localStorage.setItem('currentRepairment', JSON.stringify(repairment._id));
       this.repairs = this.repairs.filter((repair: Repairs) => repair._id != repairment._id);
     }
