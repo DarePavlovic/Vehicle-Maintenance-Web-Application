@@ -9,6 +9,7 @@ import repairRouter from './routes/repairs.routes';
 import paymentsRouter from './routes/payments.routes';
 import UserModel from './models/User';
 import PaymentModel from './models/Payment';
+import pendingPaymentsRouter from './routes/pending.routes';
 const cors = require('cors');
 const cron = require('node-cron');
 const express = require('express');
@@ -26,6 +27,7 @@ connection.once('open',()=>{
 
 const router = express.Router();
 router.use('/User', userRouter);
+router.use('/PendingPayments', pendingPaymentsRouter)
 router.use('/Payments', paymentsRouter);
 router.use('/vehicles', vehicleRouter);
 router.use('/Defect', defectRouter);

@@ -9,11 +9,11 @@
             <label class="form-label">Expense Type</label>
             <div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="kazna" name="expenseType" value="kazna" checked/>
+                <input class="form-check-input" type="radio" id="kazna" name="expenseType" value="kazna" [(ngModel)]="selectedExpenseType" checked = "true"/>
                 <label class="form-check-label" for="kazna">Kazna</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="usluga" name="expenseType" value="usluga" />
+                <input class="form-check-input" type="radio" id="usluga" name="expenseType" value="usluga" [(ngModel)]="selectedExpenseType"/>
                 <label class="form-check-label" for="usluga">Usluga</label>
               </div>
             </div>
@@ -21,15 +21,15 @@
           
           <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control" id="description" placeholder="Enter description of the expenses" />
+            <input type="text" class="form-control" id="description" placeholder="Enter description of the expenses" name="inputDescription" [(ngModel)]="inputDescription" />
           </div>
   
           <div class="mb-3">
             <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="price" placeholder="Enter cost of expenses" />
+            <input type="number" class="form-control" id="inputPrice" name="inputPrice" placeholder="Enter cost of expenses" [(ngModel)]="inputPrice" />
           </div>
   
-          <button type="submit" class="btn btn-success">Submit Report</button>
+          <button type="submit" class="btn btn-success" (click) = "reportExpenses()">Submit Report</button>
         </form>
       </div>
     </div>

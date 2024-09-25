@@ -34,6 +34,7 @@ import { EarningsComponent } from './earnings/earnings.component';
 import { HomeDriverComponent } from './home-driver/home-driver.component';
 import { EarningsMechanicComponent } from './earnings-mechanic/earnings-mechanic.component';
 import { ReportExpensesComponent } from './report-expenses/report-expenses.component';
+import { HandleExpenseComponent } from './handle-expense/handle-expense.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { ReportExpensesComponent } from './report-expenses/report-expenses.compo
     EarningsComponent,
     HomeDriverComponent,
     EarningsMechanicComponent,
-    ReportExpensesComponent
+    ReportExpensesComponent,
+    HandleExpenseComponent
   ],
   imports: [
     BrowserModule,

@@ -25,6 +25,7 @@ import { EarningsComponent } from './earnings/earnings.component';
 import { HomeDriverComponent } from './home-driver/home-driver.component';
 import { EarningsMechanicComponent } from './earnings-mechanic/earnings-mechanic.component';
 import { ReportExpensesComponent } from './report-expenses/report-expenses.component';
+import { HandleExpenseComponent } from './handle-expense/handle-expense.component';
 
 const routes: Routes = [
   {path:"", component:LoginComponent},
@@ -41,6 +42,7 @@ const routes: Routes = [
       {path:"carDetail",component:VehicleProfileComponent},
       {path:"paymentHistory", component:PaymentsHistoryComponent},
       {path:"history", component:HistoryComponent},
+      {path:"handleExpense", component:HandleExpenseComponent},
       {path:"**",component:HomeAdminComponent}
 
     ]
