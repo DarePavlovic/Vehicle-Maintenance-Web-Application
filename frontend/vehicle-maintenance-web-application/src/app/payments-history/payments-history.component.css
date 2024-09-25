@@ -1,0 +1,43 @@
+.container {
+    max-width: 1000px;
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+}
+
+.card-body {
+padding: 1rem;
+}
+
+.img-fluid {
+max-width: 100%;
+height: auto;
+}
+
+.payment-item {
+    transition: background-color 0.3s;
+}
+
+.payment-item:hover {
+    background-color: #f0f0f0; /* Light gray on hover */
+}
+
+.bg-blue {
+    background-color: #e9f1f6; /* Light blue background */
+}
+
+@media (max-width: 576px) {
+.text-center {
+    text-align: center !important;
+}
+
+.row {
+    flex-direction: column;
+}
+
+.col-md-9 {
+    padding-top: 1rem;
+}
+}

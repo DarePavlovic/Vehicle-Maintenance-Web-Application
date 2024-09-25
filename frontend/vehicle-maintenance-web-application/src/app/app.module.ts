@@ -28,6 +28,7 @@ import { VehicleDriverComponent } from './vehicle-driver/vehicle-driver.componen
 import { WaitingListComponent } from './waiting-list/waiting-list.component';
 import { RepairmentComponent } from './repairment/repairment.component';
 import { HistoryComponent } from './history/history.component';
+import { PaymentsHistoryComponent } from './payments-history/payments-history.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { HistoryComponent } from './history/history.component';
     VehicleDriverComponent,
     WaitingListComponent,
     RepairmentComponent,
-    HistoryComponent
+    HistoryComponent,
+    PaymentsHistoryComponent
   ],
   imports: [
     BrowserModule,
