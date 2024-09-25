@@ -6,6 +6,7 @@ import userRouter from './routes/user.routes'
 import vehicleRouter from './routes/vehicle.routes';
 import defectRouter from './routes/defect.routes';
 import repairRouter from './routes/repairs.routes';
+import paymentsRouter from './routes/payments.routes';
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -22,6 +23,7 @@ connection.once('open',()=>{
 
 const router = express.Router();
 router.use('/User', userRouter);
+router.use('/Payments', paymentsRouter);
 router.use('/vehicles', vehicleRouter);
 router.use('/Defect', defectRouter);
 router.use('/Repairs', repairRouter);

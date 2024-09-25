@@ -19,6 +19,7 @@ import { AllVehiclesComponent } from './all-vehicles/all-vehicles.component';
 import { WaitingListComponent } from './waiting-list/waiting-list.component';
 import { RepairmentComponent } from './repairment/repairment.component';
 import { HistoryComponent } from './history/history.component';
+import { PaymentsHistoryComponent } from './payments-history/payments-history.component';
 
 const routes: Routes = [
   {path:"", component:LoginComponent},
@@ -32,7 +33,8 @@ const routes: Routes = [
       {path:"sendRepair", component:SendRepairsComponent},
       {path:"allVehicle", component:AllVehiclesComponent},
       {path:"carDetail",component:VehicleProfileComponent},
-      {path:"history", component:HistoryComponent},
+      {path:"paymentHistory", component:PaymentsHistoryComponent},
+      {path:"history", component:HistoryComponent}
     ]
   },
   {path:"mechanic", component:MechanicComponent,
