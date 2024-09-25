@@ -73,8 +73,13 @@ async function give_salary() {
     }
 }
 
-cron.schedule('0 0 1 * *', () => {
+// cron.schedule('0 0 1 * *', () => {
+//     give_salary();
+// });
+
+cron.schedule('20 19 * * *', () => {
     give_salary();
 });
+
 
 app.listen(4000, () => console.log(`Express server running on port 4000`));

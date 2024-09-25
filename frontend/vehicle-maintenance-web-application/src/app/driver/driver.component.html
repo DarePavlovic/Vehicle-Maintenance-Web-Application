@@ -5,7 +5,7 @@
           <button class="btn btn-primary d-md-none" type="button" aria-label="Toggle navigation" (click)="toggleSidebar()">
               ☰
           </button>
-          <h3 class="text-center">Driver Dashboard</h3>
+          <h3 class="text-center" routerLink="/driver/home">Driver Dashboard</h3>
       </header>
   </div>
   <div class="row">
@@ -36,7 +36,7 @@
                       </a>
                   </li>
                   <li class="nav-item">
-                      <a class="nav-link" routerLink="#">
+                      <a class="nav-link" routerLink="/driver/earnings">
                           Evidencija plate
                       </a>
                   </li>
@@ -63,7 +63,6 @@
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div>
               <!-- Angular Router Outlet -->
-               <h1 *ngIf="vehicleNotif" style="white-space: pre-line;color: rgb(222, 118, 67);">{{vehicleNotif}}</h1>
               <router-outlet></router-outlet>
           </div>
       </main>

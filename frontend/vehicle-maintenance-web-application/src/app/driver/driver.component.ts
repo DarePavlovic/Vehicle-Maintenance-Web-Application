@@ -13,28 +13,9 @@ import { Vehicle } from '../models/Vehicle';
 export class DriverComponent implements OnInit {
 
   @ViewChild('sidebarMenu') sidebarMenu!: ElementRef;
-  constructor(private router:Router, private vehicleService:VehicleService) { }
+  constructor(private router:Router) { }
 
-  vehicleNotif: string = '';
   ngOnInit(): void {
-    const userData = localStorage.getItem('ulogovan');
-    if (userData) {
-      const userid = JSON.parse(userData);
-      this.vehicleService.getVehicleByUser(userid).subscribe((data) => {
-        const vehicle = data;
-        if (new Date(vehicle.dateRegistration) < new Date(Date.now() - 1 * 365 * 24 * 60 * 60 * 1000)) {
-          this.vehicleNotif = 'Your vehicle registration has expired!';
-        }
-        else if (new Date(vehicle.dateRegistration) < new Date(Date.now() - 1 * 355 * 24 * 60 * 60 * 1000)) {
-          this.vehicleNotif = 'Your vehicle registration will expire soon!';
-        }
-        
-  
-        // if (true) {
-        //   this.vehicleNotif += '\nJOS NEKA GRESKA';
-        // }
-      });
-    }
   }
 
   //user:User| undefined;
