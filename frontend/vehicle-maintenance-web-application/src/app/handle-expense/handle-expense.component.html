@@ -1,1 +1,37 @@
-<p>handle-expense works!</p>
+<div class="container mt-4">
+<div class="card">
+    <div class="card-header text-center">
+    <h3>Lista zahteva koji cekaju na odobravanje</h3>
+    </div>
+    <div class="card-body">
+    <div *ngFor="let pending of payments" class="mb-3 p-3 border rounded">
+        <h5>{{ pending.idUser }}</h5>
+        <p><strong>Opis:</strong> {{ pending.description }}</p>
+        <div class="row">
+            <div class="col-md-3 text-end">
+                <p><strong>Vozilo:</strong> {{ pending.idVehicle }}</p>
+            </div>
+            <div class="col-md-3 text-end">
+                <p><strong>Date:</strong> {{ pending.date | date:'mediumDate' }}</p>
+            </div>
+            <div class="col-md-3 text-end">
+                <p><strong>Tip:</strong> {{ pending.type }}</p>
+            </div>
+            <div class="col-md-3 text-end">
+                <p><strong>Cena:</strong> {{ pending.price + "din"}}</p>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-md-1 text-end">
+                <button class="btn btn-primary mt-3 mt-md-0 green" (click) = "acceptExpense(pending)">Prihvati</button>
+            </div>
+            <div class="col-md-1 text-end">
+                <button class="btn btn-primary mt-3 mt-md-0 red" (click) = "refuseExpense(pending)">Odbij</button>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</div>
+</div>

@@ -33,5 +33,12 @@ export class PendingPaymentsController{
 
     }
 
+    deletePendingPayment(req: express.Request, res: express.Response):void{
+        let idPayment = new mongoose.Types.ObjectId(req.body.idPayment);
+        PendingPaymentModel.deleteOne({'_id':idPayment}).then(() => {
+            res.json({ 'message': 'ok' });
+        });
+    }
+
     
 }

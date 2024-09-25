@@ -13,12 +13,18 @@ export class PendingService {
 
   uri = 'http://localhost:4000/PendingPayments';
 
-  getPayments() {
+  getPendingPayments(): Observable<PendingPayment[]> {
     return this.http.get<PendingPayment[]>(`${this.uri}/getPendingPayments`);
   }
   
   addPendingPayment(pendingPayment: PendingPayment): Observable<any> {
     return this.http.post<any>(`${this.uri}/addPendingPayment`, pendingPayment);
   }
+
+  deletePendingPayment(idPayment:string):Observable<any>{
+    return this.http.post<any>(`${this.uri}/deletePendingPayment`,{ idPayment});
+  }
+
+
   
 }

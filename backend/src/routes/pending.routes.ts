@@ -12,5 +12,9 @@ pendingPaymentsRouter.route('/getPendingPayments').get(
 pendingPaymentsRouter.route('/addPendingPayment').post(
     (req, res)=> new PendingPaymentsController().addPendingPayment(req, res)
 )
+pendingPaymentsRouter.route('/deletePendingPayment').post(
+    (req, res)=> new PendingPaymentsController().deletePendingPayment(req, res)
+)
+
 
 export default pendingPaymentsRouter;

@@ -13,12 +13,12 @@ export class PaymentsService {
 
   uri = 'http://localhost:4000/Payments';
 
-  getPayments() {
+  getPayments():Observable<Payment[]> {
     return this.http.get<Payment[]>(`${this.uri}/getPayments`);
   }
 
-  addPayment(data: Payment):Observable<Payment> {
-    return this.http.post<Payment>(`${this.uri}/addPayment`, data);
+  addPayment(data: Payment):Observable<any> {
+    return this.http.post<any>(`${this.uri}/addPayment`, data);
   }
 
 }

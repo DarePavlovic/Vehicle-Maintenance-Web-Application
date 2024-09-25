@@ -14,7 +14,6 @@ export class PaymentsController {
 
     addPayment(req: express.Request, res: express.Response) {
         const payment = req.body;
-        let id = new mongoose.Types.ObjectId();
         let idUser = payment.idUser;
         let idVehicle = payment.idVehicle;
         let date = payment.date;
@@ -31,11 +30,11 @@ export class PaymentsController {
             price: price,
             description: description
         });
-
+        console.log(paymentM);
         paymentM.save().then((payment) => {
-            res.json(payment);
+            res.json({ 'message': 'ok' });
         }).catch((error) => {
-            console.log(error);
+            //console.log(error);
             res.json({ 'message': 'error' });
         });
     }
