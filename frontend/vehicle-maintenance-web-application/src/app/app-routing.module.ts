@@ -32,6 +32,7 @@ const routes: Routes = [
       {path:"sendRepair", component:SendRepairsComponent},
       {path:"allVehicle", component:AllVehiclesComponent},
       {path:"carDetail",component:VehicleProfileComponent},
+      {path:"history", component:HistoryComponent},
     ]
   },
   {path:"mechanic", component:MechanicComponent,
