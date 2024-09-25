@@ -32,6 +32,7 @@ import { PaymentsHistoryComponent } from './payments-history/payments-history.co
 import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { EarningsComponent } from './earnings/earnings.component';
 import { HomeDriverComponent } from './home-driver/home-driver.component';
+import { EarningsMechanicComponent } from './earnings-mechanic/earnings-mechanic.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { HomeDriverComponent } from './home-driver/home-driver.component';
     PaymentsHistoryComponent,
     HomeAdminComponent,
     EarningsComponent,
-    HomeDriverComponent
+    HomeDriverComponent,
+    EarningsMechanicComponent
   ],
   imports: [
     BrowserModule,
