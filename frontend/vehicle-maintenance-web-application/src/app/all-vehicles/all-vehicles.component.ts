@@ -13,24 +13,22 @@ export class AllVehiclesComponent implements OnInit {
 
   constructor(private vehicleService: VehicleService, private userService: UserService, private router:Router) { }
 
+  driver: Map<string, string> = new Map<string, string>();
+
   ngOnInit(): void {
+    this.driver.set(null as any as string, 'No driver');
     this.vehicleService.getVehicles().subscribe(
       (_vehicles) => {
         this.vehicleList = _vehicles;
         this.vehicleList.forEach((vehicle: Vehicle) => {
-          let id = vehicle._id;
-          let status = vehicle.status;
-          let model = vehicle.model;
-          let picture = vehicle.picture;
-          let expenses = vehicle.priceMainainanceGeneral;
-          let fuelConsumption = vehicle.consumptionGeneral;
-          let price = vehicle.vehicleValue;
-          let driver = vehicle.idUser;
+          let idDriver = vehicle.idUser;
           
-          this.userService.getUser(driver).subscribe((user) => {
-            driver = user.firstname + ' ' + user.lastname;
-            this.vehicles.push({id, model, status, picture, expenses, fuelConsumption, price, driver });
-          });
+          if (idDriver) {
+            this.userService.getUser(idDriver).subscribe((user) => {
+              let name = user.firstname + ' ' + user.lastname;
+              this.driver.set(idDriver, name);
+            });
+          }
           
         });
       }
@@ -38,31 +36,29 @@ export class AllVehiclesComponent implements OnInit {
 
   }
   vehicleList: Vehicle[] = [];
-  vehicles = [
-    {
-      id: '1',
-      model: 'Toyota Corolla',
-      status: 'Available',
-      picture: 'https://via.placeholder.com/150', // Replace with actual image URL
-      expenses: 1200,
-      fuelConsumption: 6.5,
-      price: 25000,
-      driver: 'John Doe'
-    },
-    {
-      model: 'Ford Transit',
-      status: 'In Use',
-      picture: 'https://via.placeholder.com/150', // Replace with actual image URL
-      expenses: 2000,
-      fuelConsumption: 9.8,
-      price: 30000,
-      driver: 'Jane Smith'
-    }
-  ];
+  
 
   linkToVehicle(vehicle: any) {
     localStorage.setItem('vehicle', JSON.stringify(vehicle.id));
     this.router.navigate(['/admin/carDetail']);
+  }
+
+  sellVehicle(vehicle: Vehicle) {
+    this.vehicleService.deleteVehicle(vehicle._id).subscribe(
+      (response) => {
+        this.vehicleList = this.vehicleList.filter((v) => v._id !== vehicle._id);
+      }
+    );
+  }
+  removeDriver(vehicle:Vehicle){
+    this.vehicleService.removeDriver(vehicle.idUser).subscribe(
+      (response) => {
+        if(response.message=='ok'){
+          alert("Driver removed");
+        }
+      }
+    );
+
   }
 
 }

@@ -3,8 +3,9 @@ import { Request, Response } from 'express-serve-static-core';
 import { ParsedQs } from 'qs';
 import VehicleModel from '../models/Vehicle';
 import { ObjectId } from 'mongodb';
+import UserModel from '../models/User';
 const mongoose = require('mongoose');
-export class VehicleController{
+export class VehicleController {
 
     addVehicle(req: express.Request, res: express.Response): void {
 
@@ -39,11 +40,11 @@ export class VehicleController{
             //ownerUsername: req.body.ownerUsername
         })
         //save the user and if its error console log the error and send status 400 else send the message ok
-        vehicle.save().then((_vehicle)=>{
-            res.json({'message':'ok'});
-        }).catch((error)=>{
+        vehicle.save().then((_vehicle) => {
+            res.json({ 'message': 'ok' });
+        }).catch((error) => {
             console.log(error);
-            res.json({'message':'error'});
+            res.json({ 'message': 'error' });
         });
 
     }
@@ -53,13 +54,13 @@ export class VehicleController{
         let idVehicle = new mongoose.Types.ObjectId(req.body.idVehicle);
         //let idUser = req.body.idUser;
         let idUser = new mongoose.Types.ObjectId(req.body.idUser);
-        VehicleModel.findOneAndUpdate({'_id':idVehicle}, {'idUser':idUser, 'status':"active"}).then((vehicle)=>{
+        VehicleModel.findOneAndUpdate({ '_id': idVehicle }, { 'idUser': idUser, 'status': "active" }).then((vehicle) => {
             res.json(vehicle);
         })
     }
 
     getVehicles(req: express.Request, res: express.Response): void {
-        VehicleModel.find().then((vehicles)=>{
+        VehicleModel.find().then((vehicles) => {
             res.json(vehicles);
         })
     }
@@ -67,7 +68,7 @@ export class VehicleController{
     getVehicle(req: express.Request, res: express.Response): void {
         const idVehicle = req.body.idVehicle;
         let id = new mongoose.Types.ObjectId(idVehicle);
-        VehicleModel.findOne({'_id':id}).then((vehicle)=>{
+        VehicleModel.findOne({ '_id': id }).then((vehicle) => {
             res.json(vehicle);
         })
     }
@@ -102,26 +103,38 @@ export class VehicleController{
         let vehicleValue = req.body.vehicleValue;
         //let idUser = req.body.idUser;
         //let ownerUsername = req.body.ownerUsername;
-        VehicleModel.updateOne({'_id':id}, {$set:{'make':make, 'model':model, 'engine':engine,
-        'fuel':fuel,'yearmade':yearmade,'licensePlate':licensePlate, 'picture':picture,'mileage':mileage,'mileageMonth':mileageMonth,
-        'mileageTillServis':mileageTillServis,'fuelConsumptionMonth':fuelConsumptionMonth,'consumptionMonth':consumptionMonth,
-        'consumptionGeneral':consumptionGeneral,'status':status,'dateTire':dateTire,'dateRegistration':dateRegistration,
-        'dateSmallServis':dateSmallServis,'dateBigServis':dateBigServis,'dateFirstAid':dateFirstAid,'dateFireExtinguisher':dateFireExtinguisher,'dateFuelFill':dateFuelFill,
-        'priceFuelMonth':priceFuelMonth,'priceMainainanceMonth':priceMainainanceMonth,'priceMainainanceGeneral':priceMainainanceGeneral,
-        'priceRegistration':priceRegistration,'vehicleValue':vehicleValue}}).then((err)=>{
-            if(err) console.log(err);
-            else{
-                res.json({'message':'ok'})
+        VehicleModel.updateOne({ '_id': id }, {
+            $set: {
+                'make': make, 'model': model, 'engine': engine,
+                'fuel': fuel, 'yearmade': yearmade, 'licensePlate': licensePlate, 'picture': picture, 'mileage': mileage, 'mileageMonth': mileageMonth,
+                'mileageTillServis': mileageTillServis, 'fuelConsumptionMonth': fuelConsumptionMonth, 'consumptionMonth': consumptionMonth,
+                'consumptionGeneral': consumptionGeneral, 'status': status, 'dateTire': dateTire, 'dateRegistration': dateRegistration,
+                'dateSmallServis': dateSmallServis, 'dateBigServis': dateBigServis, 'dateFirstAid': dateFirstAid, 'dateFireExtinguisher': dateFireExtinguisher, 'dateFuelFill': dateFuelFill,
+                'priceFuelMonth': priceFuelMonth, 'priceMainainanceMonth': priceMainainanceMonth, 'priceMainainanceGeneral': priceMainainanceGeneral,
+                'priceRegistration': priceRegistration, 'vehicleValue': vehicleValue
+            }
+        }).then((err) => {
+            if (err) console.log(err);
+            else {
+                res.json({ 'message': 'ok' })
             }
         })
     }
 
     deleteVehicle(req: express.Request, res: express.Response): void {
         let id = new mongoose.Types.ObjectId(req.body.idVehicle);
-        VehicleModel.deleteOne({'_id':id}).then((err)=>{
-            if(err) console.log(err);
-            else{
-                res.json({'message':'ok'})
+        VehicleModel.findOneAndDelete({ '_id': id }).then((veh) => {
+            if (veh) {
+                if (veh.idUser) {
+                    UserModel.findOneAndUpdate({ '_id': veh.idUser }, { $set: { 'idVehicle': null } }).then((user) => {
+                        res.json({ 'message': 'ok' });
+                    });
+                } else {
+                    res.json({ 'message': 'ok' });
+                }
+            }
+            else {
+                res.json({ 'message': 'not found' })
             }
         })
     }
@@ -129,13 +142,13 @@ export class VehicleController{
     getVehicleByUser(req: express.Request, res: express.Response): void {
         let idUser = new mongoose.Types.ObjectId(req.body.idUser);
         //console.log(idUser);
-        VehicleModel.findOne({'idUser':idUser}).then((vehicles)=>{
-            if(vehicles)
+        VehicleModel.findOne({ 'idUser': idUser }).then((vehicles) => {
+            if (vehicles)
                 res.json(vehicles);
         })
     }
 
-    
+
     fillFuel(req: express.Request, res: express.Response): void {
         let id = new mongoose.Types.ObjectId(req.body.id);
         let mileage = req.body.mileage;
@@ -146,15 +159,43 @@ export class VehicleController{
         let consumptionGeneral = req.body.consumptionGeneral;
         let dateFuelFill = req.body.dateFuelFill;
         let priceFuelMonth = req.body.priceFuelMonth;
-        VehicleModel.updateOne({'_id':id}, {$set:{'mileage':mileage,'mileageMonth':mileageMonth,
-        'mileageTillServis':mileageTillServis,'fuelConsumptionMonth':fuelConsumptionMonth,'consumptionMonth':consumptionMonth,
-        'consumptionGeneral':consumptionGeneral,'dateFuelFill':dateFuelFill,
-        'priceFuelMonth':priceFuelMonth}}).then((err)=>{
-            if(err) console.log(err);
-            else{
-                res.json({'message':'ok'})
+        VehicleModel.updateOne({ '_id': id }, {
+            $set: {
+                'mileage': mileage, 'mileageMonth': mileageMonth,
+                'mileageTillServis': mileageTillServis, 'fuelConsumptionMonth': fuelConsumptionMonth, 'consumptionMonth': consumptionMonth,
+                'consumptionGeneral': consumptionGeneral, 'dateFuelFill': dateFuelFill,
+                'priceFuelMonth': priceFuelMonth
+            }
+        }).then((err) => {
+            if (err) console.log(err);
+            else {
+                res.json({ 'message': 'ok' })
             }
         })
+    }
+
+    removeDriver(req: express.Request, res: express.Response): void {
+        console.log(req.body.idUser);
+        const id = new mongoose.Types.ObjectId(req.body.idUser);
+
+        VehicleModel.findOneAndUpdate({ 'idUser': id }, { $set: { 'status': 'not active', 'idUser': null } }, { returnDocument: "after" }).then((veh) => {
+            if (veh) {
+                UserModel.updateOne({ '_id': id }, { $set: { 'idVehicle': null } }).then((user) => {
+                    if (user) {
+                        res.json({ 'message': 'ok' });
+                    }
+                }).catch((err) => {
+                    console.log(err);
+                    res.json({ 'message': 'error' });
+                    VehicleModel.updateOne({ _id: veh._id }, { $set: { status: 'active', idUser: id } }).then((veh) => {
+                        //vrati nazad ako je puklo
+                    });
+                });
+            }
+        }).catch((err) => {
+            console.log(err);
+            res.json({ 'message': 'error' });
+        });
     }
 
 }

@@ -63,6 +63,7 @@
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div>
               <!-- Angular Router Outlet -->
+               <h1 *ngIf="vehicleNotif" style="white-space: pre-line;color: rgb(222, 118, 67);">{{vehicleNotif}}</h1>
               <router-outlet></router-outlet>
           </div>
       </main>

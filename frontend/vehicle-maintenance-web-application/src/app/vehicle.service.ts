@@ -37,6 +37,10 @@ export class VehicleService {
     return this.http.post<any>(`${this.uri}/deleteVehicle`, idVehicle);
   }
 
+  removeDriver(idUser: string): Observable<any> {
+    return this.http.post<any>(`${this.uri}/removeDriver`, {idUser});
+  }
+
   getVehicleByUser(idUser:string):Observable<Vehicle>{ 
 
     return this.http.post<Vehicle>(`${this.uri}/getVehicleByUser`, {idUser});

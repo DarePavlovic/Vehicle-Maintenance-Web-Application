@@ -4,7 +4,7 @@
         <h3>Company Vehicles</h3>
       </div>
       <div class="card-body">
-        <div *ngFor="let vehicle of vehicles" class="mb-3 p-3 border rounded">
+        <div *ngFor="let vehicle of vehicleList" class="mb-3 p-3 border rounded">
           <div class="row">
             <div class="col-md-3 text-center mb-2 mb-md-0">
               <img [src]="vehicle.picture" alt="{{ vehicle.model }}" class="img-fluid rounded" (click)="linkToVehicle(vehicle)">
@@ -12,10 +12,14 @@
             <div class="col-md-9">
               <h5>{{ vehicle.model }}</h5>
               <p><strong>Status:</strong> {{ vehicle.status }}</p>
-              <p><strong>Driver:</strong> {{ vehicle.driver }}</p>
-              <p><strong>Expenses:</strong> {{ vehicle.expenses | currency }}</p>
-              <p><strong>Fuel Consumption:</strong> {{ vehicle.fuelConsumption }} L/100km</p>
-              <p><strong>Price:</strong> {{ vehicle.price | currency }}</p>
+              <p><strong>Driver:</strong> {{ driver.get(vehicle.idUser) }}</p>
+              <p><strong>Expenses:</strong> {{ vehicle.priceMainainanceGeneral | currency }}</p>
+              <p><strong>Fuel Consumption:</strong> {{ vehicle.consumptionGeneral }} L/100km</p>
+              <p><strong>Price:</strong> {{ vehicle.vehicleValue | currency }}</p>
+            </div>
+            <div class="col-12 text-center mt-3">
+              <button class="btn btn-danger me-2" (click)="removeDriver(vehicle)">Ukloni Vozača</button>
+              <button class="btn btn-warning" (click)="sellVehicle(vehicle)">Prodaj Vozilo</button>
             </div>
           </div>
         </div>

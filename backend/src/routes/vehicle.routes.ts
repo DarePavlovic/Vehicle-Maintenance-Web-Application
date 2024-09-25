@@ -37,5 +37,8 @@ vehicleRouter.route('/fillFuel').post(
     (req,res)=> new VehicleController().fillFuel(req,res)
 )
 
+vehicleRouter.route('/removeDriver').post(
+    (req,res)=> new VehicleController().removeDriver(req,res)
+)
 
 export default vehicleRouter;
