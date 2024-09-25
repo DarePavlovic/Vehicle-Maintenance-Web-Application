@@ -34,10 +34,10 @@ let User = new Schema({
         type: String
     },
     coefficient: {
-        type: Number
+        type: Number, default: 0
     },
     salary: {
-        type: Number
+        type: Number, default: 0
     },
     idVehicle: {
         type: ObjectId
