@@ -5,16 +5,18 @@
       </div>
       <div class="card-body">
         <div *ngFor="let repair of repairs" class="mb-3 p-3 border rounded">
-          <h5>{{ repair.vehicleName }}</h5>
+          <div *ngIf="repair.price==0">
+          <h5>{{ vehicle.get(repair.idVehicle) }}</h5>
           <p><strong>Description:</strong> {{ repair.description }}</p>
           <p><strong>Date:</strong> {{ repair.date | date:'mediumDate' }}</p>
           
           <div class="row align-items-center">
             <div class="col-md-4 text-end">
-              <button class="btn btn-primary mt-3 mt-md-0" (click)="setCurrent(repair)">Send to Mechanic</button>
+              <button class="btn btn-primary mt-3 mt-md-0" (click)="setCurrent(repair)">Resolve it</button>
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </div>

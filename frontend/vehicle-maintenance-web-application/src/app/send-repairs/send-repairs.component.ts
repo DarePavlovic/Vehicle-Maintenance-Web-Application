@@ -26,6 +26,7 @@ export class SendRepairsComponent implements OnInit {
       });
     this.repairService.getRepairs().subscribe((repairs) => {
       repairs.forEach((repair: Repairs) => {
+        if(!repair.idUser){
         const description = repair.description;
         const date = repair.date;
         const id = repair.idVehicle;
@@ -36,7 +37,7 @@ export class SendRepairsComponent implements OnInit {
           this.repairs.push({id:idRepair, description, date, vehicleName, selectedMechanic: '' });
         }
         );
-
+      }
       });
     });
   }

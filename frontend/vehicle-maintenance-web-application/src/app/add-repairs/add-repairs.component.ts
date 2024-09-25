@@ -206,7 +206,7 @@ export class AddRepairsComponent implements OnInit {
         // Now create the repair object after all defects are added
         const repair: Repairs = {
           _id: "",
-          idUser: this.user_id || '',
+          idUser: '',
           idVehicle: this.idVehicle,
           idDefect: this.listIds,
           date: new Date(),

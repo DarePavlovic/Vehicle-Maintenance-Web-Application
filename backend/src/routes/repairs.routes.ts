@@ -32,6 +32,9 @@ repairRouter.route('/getRepairsByVehicle').post(
     (req, res) => new RepairsController().getRepairsByVehicle(req, res)
 )
 
+repairRouter.route('/getRepairsByMechanic').post(
+    (req, res) => new RepairsController().getRepairsByMechanic(req, res)
+)
 repairRouter.route('/setPrice').post(
     (req, res) => new RepairsController().setPrice(req, res)
 )

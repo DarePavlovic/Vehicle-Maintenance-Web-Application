@@ -53,6 +53,12 @@ export class RepairsService {
     }
     return this.http.post<Repairs[]>(`${this.uri}/getRepairsByVehicle`, data);
   }
+  getRepairsByMechanic(idUser: string) {
+    const data = {
+      idUser: idUser
+    }
+    return this.http.post<Repairs[]>(`${this.uri}/getRepairsByMechanic`, data);
+  }
 
   setPrice(idRepair: string, price: number) {
     const data = {

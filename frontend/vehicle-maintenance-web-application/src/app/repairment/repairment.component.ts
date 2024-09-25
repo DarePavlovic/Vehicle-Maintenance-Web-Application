@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Repairs } from '../models/Repairs';
+import { RepairsService } from '../repairs.service';
 
 @Component({
   selector: 'app-repairment',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RepairmentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private repairService:RepairsService) { }
 
   ngOnInit(): void {
+    let id = localStorage.getItem('currentRepairment');
+    if(id){
+      this.repairService.getRepair(JSON.stringify(id)).subscribe((repair)=>{
+        this.repair = repair;
+      });
+    }
   }
+  repair:Repairs|undefined;
 
 }
