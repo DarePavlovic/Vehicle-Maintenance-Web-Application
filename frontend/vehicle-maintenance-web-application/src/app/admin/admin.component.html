@@ -2,7 +2,8 @@
     <div class="row">
         <!-- Header -->
         <header class="col-12 bg-primary text-white py-3">
-            <button class="btn btn-primary d-md-none" type="button" aria-label="Toggle navigation" (click)="toggleSidebar()">
+            <button class="btn btn-primary d-md-none" type="button" aria-label="Toggle navigation"
+                (click)="toggleSidebar()">
                 ☰
             </button>
             <h3 class="text-center">Admin Dashboard</h3>
@@ -10,60 +11,51 @@
     </div>
     <div class="row">
         <!-- Side Menu -->
-        
+
         <nav id="sidebarMenu" #sidebarMenu class="col-md-2 d-md-block bg-light sidebar collapse">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" routerLink="/admin/register">
-                            Registracija
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/admin/updateUser">
-                            Azuriraj korisnika
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/admin/sendRepair">
-                            Prosledi zahtev majstoru
-                        </a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/admin/addVehicle">
-                            Ubaci vozilo
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/admin/setOwner">
-                            Dodeli vozilo
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Prodaj vozilo
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="/admin/allVehicle">
-                            Evidencija vozila
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            Evidencija vozac-vozilo
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" (click)="odjava()">
-                            Odjavi se
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" routerLink="/admin/register">
+                                Registracija
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/admin/updateUser">
+                                Azuriraj korisnika
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/admin/sendRepair">
+                                Prosledi zahtev majstoru
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/admin/addVehicle">
+                                Ubaci vozilo
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/admin/setOwner">
+                                Dodeli vozilo
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/admin/allVehicle">
+                                Evidencija vozila
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" (click)="odjava()">
+                                Odjavi se
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </nav>
         <!-- Center Part -->
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">

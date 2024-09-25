@@ -1,0 +1,20 @@
+<div class="container mt-4">
+    <div class="card">
+      <div class="card-header text-center">
+        <h3>Repairs List</h3>
+      </div>
+      <div class="card-body">
+        <div *ngFor="let repair of repairs" class="mb-3 p-3 border rounded">
+          <h5>{{ repair.vehicleName }}</h5>
+          <p><strong>Description:</strong> {{ repair.description }}</p>
+          <p><strong>Date:</strong> {{ repair.date | date:'mediumDate' }}</p>
+          
+          <div class="row align-items-center">
+            <div class="col-md-4 text-end">
+              <button class="btn btn-primary mt-3 mt-md-0" (click)="setCurrent(repair)">Send to Mechanic</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

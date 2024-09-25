@@ -16,6 +16,9 @@ import { ChangePassComponent } from './change-pass/change-pass.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { SendRepairsComponent } from './send-repairs/send-repairs.component';
 import { AllVehiclesComponent } from './all-vehicles/all-vehicles.component';
+import { WaitingListComponent } from './waiting-list/waiting-list.component';
+import { RepairmentComponent } from './repairment/repairment.component';
+import { HistoryComponent } from './history/history.component';
 
 const routes: Routes = [
   {path:"", component:LoginComponent},
@@ -31,7 +34,13 @@ const routes: Routes = [
       {path:"carDetail",component:VehicleProfileComponent},
     ]
   },
-  {path:"mechanic", component:MechanicComponent},
+  {path:"mechanic", component:MechanicComponent,
+    children:[
+      {path:"waitingList", component:WaitingListComponent},
+      {path:"repairment", component:RepairmentComponent},
+      {path:"history", component:HistoryComponent}
+    ]
+  },
   {path:"driver", component:DriverComponent,
     children:[
       {path:"updateUser", component:UpdateUserComponent},

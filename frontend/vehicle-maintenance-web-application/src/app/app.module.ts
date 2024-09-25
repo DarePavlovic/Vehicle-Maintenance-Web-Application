@@ -25,6 +25,9 @@ import { ChangePassComponent } from './change-pass/change-pass.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { AllVehiclesComponent } from './all-vehicles/all-vehicles.component';
 import { VehicleDriverComponent } from './vehicle-driver/vehicle-driver.component';
+import { WaitingListComponent } from './waiting-list/waiting-list.component';
+import { RepairmentComponent } from './repairment/repairment.component';
+import { HistoryComponent } from './history/history.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { VehicleDriverComponent } from './vehicle-driver/vehicle-driver.componen
     ChangePassComponent,
     UserProfileComponent,
     AllVehiclesComponent,
-    VehicleDriverComponent
+    VehicleDriverComponent,
+    WaitingListComponent,
+    RepairmentComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
