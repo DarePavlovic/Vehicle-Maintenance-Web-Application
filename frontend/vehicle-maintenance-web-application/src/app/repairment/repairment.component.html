@@ -1,0 +1,86 @@
+<h1 id="heading">{{repair.description}}</h1>
+<br />
+<h4>Lista defekata: </h4>
+<br />
+<div id="defectsContainer" *ngFor="let defect of defects; let i = index" class="mb-3 p-3 border rounded defect">
+    <div class="row">
+        <div class="col-md-12">
+            <p (click)="changeVisibility(i)"><b>{{ defect.description }}</b></p>
+        </div>
+        <div class="fullDescription col-md-12" style="display: none;">
+            <hr/>
+            <div class="flex-row flex-center">
+                <div class="left-picture">
+                    <strong><p>Slika pre:</p></strong>
+                    <br>
+                    <img [src]="defect.pictureBefore" class="card-img img-fluid" alt="Slika pre">
+                </div>
+                <div class="right-picture">
+                    <strong><p>Slika posle:</p></strong>
+                    <input #slikaUpload type="file" (change)="slikaDodata($event)" accept="image/jpg, image/png, image/jpeg" class="form-control-file">
+                    <br>
+                    <img *ngIf="slikaSacuvana && slika!=''" id="profile" [src]="putdoslike()" alt="" class="img-fluid"><br>
+                </div>
+                
+            </div>
+            <div class="flex-row">
+                <div class="left-section">
+                    <strong>Cena ruke:</strong>
+                    <input type="number" class="form-control" name="inputMechanicFee" id="inputMechanicFee" [(ngModel)]="inputMechanicFee" required>
+                    <br/>
+                    <strong>Cena delovi:</strong>
+                    <input type="number" class="form-control" name="inputPriceParts" id="inputPriceParts" [(ngModel)]="inputPriceParts" required>
+                </div>
+                <div class="right-section">
+                    <div class="form-group">
+                        <strong>Usluge:</strong><br>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="checkboxFault" /> Kvar
+                        </label><br>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="checkboxSmallService" /> Mali servis
+                        </label><br>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="checkboxBigService" /> Veliki servis
+                        </label><br>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="checkboxRegistration" /> Registracija
+                        </label><br>
+                        <label>
+                            <input type="checkbox" [(ngModel)]="checkboxTire" /> Gume
+                        </label><br>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="flex-row flex-center">
+                <!-- <button type="submit" class="btn btn-primary" (click)="submitDefect()">Submit</button> -->
+                <button type="submit" class="btn btn-primary col-md-4">Unesi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div *ngFor="let defect of defects; let i = index" class="mb-3 p-3 border rounded" id="defectsContainer">
+    <div class="row">
+        <div class="col-md-12">
+            <p (click)="changeVisibility(i)"><b> {{ defect.description }} </b></p>
+        </div>
+        <div class="col-md-2">
+            <p> {{ payment.idVehicle }}</p>
+        </div>
+        <div class="col-md-2">
+            <p> {{ payment.date | date:'mediumDate' }}</p>
+        </div>
+        <div class="col-md-2">
+            <p> {{ payment.price + "din" }}</p>
+        </div>
+        <div class="col-md-2">
+            <p> {{ payment.description }}</p>
+        </div>
+        <div class="col-md-2">
+            <p> {{ payment.type }}</p>
+        </div>
+    </div>
+</div> -->

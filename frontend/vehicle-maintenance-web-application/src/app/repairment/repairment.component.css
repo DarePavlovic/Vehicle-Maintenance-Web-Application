@@ -1,0 +1,35 @@
+#heading{
+    text-align: center;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    gap: 4%
+}
+
+.flex-center{
+    justify-content: space-around;
+}
+
+.right-picture{
+    width: 48%;
+    max-height: 30vw;
+}
+
+.right-picture img{
+    height: 70%;
+}
+
+.left-picture{
+    width: 48%;
+    max-height: 30vw;
+}
+
+.left-picture img{
+    height: 80%;
+}
+
+.left-section, .right-section{
+    width: 48%;
+}

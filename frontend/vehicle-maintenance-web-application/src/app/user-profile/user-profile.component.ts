@@ -65,7 +65,7 @@ export class UserProfileComponent implements OnInit {
         this.user.picture = this.slika;
         //localStorage.setItem('ulogovan',JSON.stringify(this.user));
         this.bo=false;
-         this.ngOnInit();
+        this.ngOnInit();
         
         
       }
