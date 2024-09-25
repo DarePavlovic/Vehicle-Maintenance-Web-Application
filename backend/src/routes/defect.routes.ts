@@ -23,5 +23,8 @@ defectRouter.route('/updateDefect').post(
 defectRouter.route('/deleteDefect').post(
     (req, res) => new DefectController().deleteDefect(req, res)
 )
+defectRouter.route('/fixDefect').post(
+    (req, res) => new DefectController().fixDefect(req, res)
+)
 
 export default defectRouter;

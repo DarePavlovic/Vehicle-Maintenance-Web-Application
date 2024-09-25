@@ -56,4 +56,16 @@ export class DefectController{
             res.json(defect);
         })
     }
+
+    fixDefect(req:express.Request, res:express.Response){
+        let idDefect = new mongoose.Types.ObjectId(req.body.idDefect);
+        let pictureAfter = req.body.pictureAfter;
+        let priceParts = req.body.priceParts;
+        let mechanicFee = req.body.mechanicFee;
+        let totalPrice = req.body.totalPrice;
+
+        DefectModel.findOneAndUpdate({'_id':idDefect}, {'pictureAfter':pictureAfter, 'priceParts':priceParts, 'mechanicFee':mechanicFee, 'totalPrice':totalPrice}).then((defect)=>{
+            res.json(defect);
+        })
+    }
 }

@@ -8,4 +8,9 @@ paymentsRouter.route('/getPayments').get(
     (req, res) => new PaymentsController().getPayments(req, res)
 )
 
+paymentsRouter.route('/addPayment').post(
+    (req, res) => new PaymentsController().addPayment(req, res)
+)
+
+
 export default paymentsRouter;

@@ -16,7 +16,7 @@ export class WaitingListComponent implements OnInit {
     let userData = localStorage.getItem('ulogovan');
     if (userData) {
       this.repairService.getRepairsByMechanic(JSON.parse(userData)).subscribe((data: Repairs[]) => {
-        this.repairs = data;
+        this.repairs = data.filter((repair: Repairs) => repair.price == 0);
 
         this.repairs.forEach((repair: Repairs) => {
           let idVehicle = repair.idVehicle;
@@ -31,10 +31,7 @@ export class WaitingListComponent implements OnInit {
       });
     }
   }
-  // repairs = [
-  //   {id:"", description: 'Oil change needed', date: new Date(), vehicleName: 'Toyota Corolla', selectedMechanic: '' },
-  //   {id:"", description: 'Brake pad replacement', date: new Date(), vehicleName: 'Honda Civic', selectedMechanic: '' },
-  // ];
+
   repairs: Repairs[] = [];
   setCUrrentRepairment: boolean = false;
   setCurrent(repairment: Repairs) {

@@ -5,7 +5,7 @@
       </div>
       <div class="card-body">
         <div *ngFor="let repair of repairs" class="mb-3 p-3 border rounded">
-          <div *ngIf="repair.price==0">
+          <!-- <div *ngIf="repair.price==0"> -->
           <h5>{{ vehicle.get(repair.idVehicle) }}</h5>
           <p><strong>Description:</strong> {{ repair.description }}</p>
           <p><strong>Date:</strong> {{ repair.date | date:'mediumDate' }}</p>
@@ -17,6 +17,6 @@
           </div>
         </div>
       </div>
-      </div>
+      <!-- </div> -->
     </div>
   </div>

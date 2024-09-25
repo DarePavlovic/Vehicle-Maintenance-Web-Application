@@ -38,5 +38,15 @@ export class DefectService {
     return this.http.post(`${this.uri}/deleteDefect`, data);
   }
 
+  fixDefect(idDefect: string, pictureAfter:string, priceParts: number, mechanicFee: number, totalPrice: number):Observable<Defect> {
+    const data = {
+      idDefect: idDefect,
+      pictureAfter: pictureAfter,
+      priceParts: priceParts,
+      mechanicFee: mechanicFee,
+      totalPrice: totalPrice
+    }
+    return this.http.post<Defect>(`${this.uri}/fixDefect`, data);
+  }
 
 }

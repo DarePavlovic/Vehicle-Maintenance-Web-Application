@@ -97,7 +97,7 @@ export class RepairsController {
     setPrice(req: express.Request, res: express.Response): void {
         let idRepair = new mongoose.Types.ObjectId(req.body.idRepair);
         let price = req.body.price;
-        RepairsModel.findOneAndUpdate({ '_id': idRepair }, { 'price': price }).then((repair) => {
+        RepairsModel.findOneAndUpdate({ '_id': idRepair }, { $inc: { 'price': price } }).then((repair) => {
             res.json(repair);
         })
     }
