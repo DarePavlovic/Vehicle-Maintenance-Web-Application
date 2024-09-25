@@ -4,7 +4,30 @@
             <h3>Istorija placanja</h3>
         </div>
         <div class="card-body">
-            <div class="row">
+
+            <div class="mb-3 label_container flex_label">
+            <label>
+                <input type="radio" name="paymentType" value="sve" (change)="filterPayments('sve')" checked>
+                Sve
+            </label>
+            <label>
+                <input type="radio" name="paymentType" value="plata" (change)="filterPayments('plata')">
+                Plata
+            </label>
+            <label>
+                <input type="radio" name="paymentType" value="kazna" (change)="filterPayments('kazna')">
+                Kazne
+            </label>
+            <label>
+                <input type="radio" name="paymentType" value="popravka" (change)="filterPayments('popravka')">
+                Popravke
+            </label>
+            <label>
+                <input type="radio" name="paymentType" value="usluge" (change)="filterPayments('usluge')">
+                Usluge
+            </label>
+            </div>
+            <div class="row table-headings">
                 <div class="col-md-2">
                     <p><strong>Ime Zaposlenog:</strong></p>
                 </div>
@@ -24,7 +47,14 @@
                     <p><strong>Tip:</strong></p>
                 </div>
             </div>
-            <div *ngFor="let payment of payments; let i = index" class="mb-3 p-3 border rounded payment-item" [ngClass]="{ 'bg-blue': i % 2 !== 0 }">
+            <div>
+
+            </div>
+
+            <div *ngIf="filteredPayments.length == 0">
+                <p>Ne postoji istorija placanja za ovu kategoriju</p>
+            </div>
+            <div *ngFor="let payment of filteredPayments; let i = index" class="mb-3 p-3 border rounded payment-item" [ngClass]="{ 'bg-blue': i % 2 !== 0 }">
                 <div class="row">
                     <div class="col-md-2">
                         <p> {{ payment.idUser }}</p>

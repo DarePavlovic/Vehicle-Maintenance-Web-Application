@@ -33,15 +33,24 @@ export class PaymentsHistoryComponent implements OnInit {
             this.vehicleService.getVehicle(idVehicle).subscribe((vehicle: Vehicle) => {
               let vehicleName = vehicle.model;
               this.payments.push({_id: id, idUser: fetched_user, idVehicle: vehicleName, date: datePayment, price: price, description: description, type: type});
+              this.filteredPayments = [...this.payments]
             });
           });
           
         });
       }
     );
+  }
 
+  filterPayments(type: string) {
+    if (type === 'sve') {
+      this.filteredPayments = this.payments;
+    } else {
+      this.filteredPayments = this.payments.filter(payment => payment.type === type);
+    }
   }
 
   paymentsList: Payment[] = [];
   payments: Payment[] = [];
+  filteredPayments: Payment[] = [];
 }
