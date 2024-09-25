@@ -12,20 +12,33 @@ export class VehicleProfileComponent implements OnInit {
   constructor(private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
-    let userData = localStorage.getItem('ulogovan');
-    if (userData) {
-      this.user_id = JSON.parse(userData);
-      console.log("user id is:" + this.user_id);
-      if (this.user_id) {
-        this.vehicleService.getVehicleByUser(this.user_id).subscribe((vehicle: Vehicle) => {
-          if (vehicle) {
-            console.log(vehicle);
-            this.vehicle = vehicle;
-          }
-        });
+    const id = localStorage.getItem('vehicle');
+    
+    if (id) {
+      const trimmedId = id.replace(/^"|"$/g, '')
+      console.log("idVehicle is:" + id);
+      this.vehicleService.getVehicle(trimmedId).subscribe((vehicle: Vehicle) => {
+        if (vehicle) {
+          console.log(vehicle);
+          this.vehicle = vehicle;
+          localStorage.removeItem('vehicle');
+        }
+      });
+    } else {
+      let userData = localStorage.getItem('ulogovan');
+      if (userData) {
+        this.user_id = JSON.parse(userData);
+        console.log("user id is:" + this.user_id);
+        if (this.user_id) {
+          this.vehicleService.getVehicleByUser(this.user_id).subscribe((vehicle: Vehicle) => {
+            if (vehicle) {
+              console.log(vehicle);
+              this.vehicle = vehicle;
+            }
+          });
+        }
       }
     }
-    
   }
   vehicle = {
     model: 'Toyota Corolla',
@@ -55,7 +68,7 @@ export class VehicleProfileComponent implements OnInit {
     vehicleValue: 20000
   };
 
-  user_id: string="";
+  user_id: string = "";
   //vehicle: Vehicle|undefined;
 
 

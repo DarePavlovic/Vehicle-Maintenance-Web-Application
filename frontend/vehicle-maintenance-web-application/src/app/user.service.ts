@@ -112,4 +112,13 @@ export class UserService {
 
     return this.http.post<any>(`${this.uri}/updateProfile`, data);
   }
+
+  getAllMechanics() {
+    return this.http.get<User[]>(`${this.uri}/getAllMechanics`).pipe(
+      catchError((error) => {
+        console.error(error);
+        return of([]);
+      } )
+    );
+  }
 }

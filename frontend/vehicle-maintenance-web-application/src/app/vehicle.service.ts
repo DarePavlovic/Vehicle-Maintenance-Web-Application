@@ -26,7 +26,7 @@ export class VehicleService {
   }
 
   getVehicle(idVehicle: string): Observable<Vehicle> {
-    return this.http.post<Vehicle>(`${this.uri}/getVehicleLicense`, {idVehicle});
+    return this.http.post<Vehicle>(`${this.uri}/getVehicle`, {idVehicle});
   }
 
   updateVehicle(vehicle: Vehicle): Observable<any> {

@@ -23,6 +23,8 @@ import { AddFuelComponent } from './add-fuel/add-fuel.component';
 import { VehicleProfileComponent } from './vehicle-profile/vehicle-profile.component';
 import { ChangePassComponent } from './change-pass/change-pass.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AllVehiclesComponent } from './all-vehicles/all-vehicles.component';
+import { VehicleDriverComponent } from './vehicle-driver/vehicle-driver.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     AddFuelComponent,
     VehicleProfileComponent,
     ChangePassComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    AllVehiclesComponent,
+    VehicleDriverComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ vehicleRouter.route('/getVehicles').get(
     (req,res)=> new VehicleController().getVehicles(req,res)
 )
 
-vehicleRouter.route('/getVehicleLicense').post(
+vehicleRouter.route('/getVehicle').post(
     (req,res)=> new VehicleController().getVehicle(req,res)
 )
 

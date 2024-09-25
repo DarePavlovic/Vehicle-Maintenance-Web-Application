@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -8,7 +9,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class AdminComponent implements OnInit {
 
   @ViewChild('sidebarMenu') sidebarMenu!: ElementRef;
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -21,6 +22,10 @@ export class AdminComponent implements OnInit {
     this.sidebarMenu.nativeElement.classList.remove('show');
   }
 
+  odjava() {
+    localStorage.removeItem('ulogovan');
+    this.router.navigate(['login']);
+  }
   
 
 

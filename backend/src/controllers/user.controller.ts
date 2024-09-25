@@ -103,6 +103,15 @@ export class UserController {
         })
     }
 
+    getAllMechanics = (req: express.Request, res: express.Response) => {
+        UserModel.find({ 'type': 'mechanic' }).then((mechanics) => {
+            res.json(mechanics);
+        }).catch((error) => {
+            console.log(error);
+            res.status(500).json({ 'message': 'error' });
+        })
+    }
+
 
 
     setVehicle = (req: express.Request, res: express.Response) => {

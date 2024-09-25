@@ -65,7 +65,8 @@ export class VehicleController{
     }
 
     getVehicle(req: express.Request, res: express.Response): void {
-        let id = new mongoose.Types.ObjectId(req.body.idVehicle);
+        const idVehicle = req.body.idVehicle;
+        let id = new mongoose.Types.ObjectId(idVehicle);
         VehicleModel.findOne({'_id':id}).then((vehicle)=>{
             res.json(vehicle);
         })

@@ -26,6 +26,9 @@ userRouter.route('/updateUser').post(
 userRouter.route('/getAllUsers').get(
     (req,res)=> new UserController().getAllUsers(req,res)
 )  
+userRouter.route('/getAllMechanics').get(
+    (req,res)=> new UserController().getAllMechanics(req,res)
+)  
 
 userRouter.route('/setVehicle').post(
     (req,res)=> new UserController().setVehicle(req,res)
