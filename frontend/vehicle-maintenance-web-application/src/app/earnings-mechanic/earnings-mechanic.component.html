@@ -1,10 +1,13 @@
 <div class="container mt-8">
     <div class="card">
         <div class="card-header text-center">
-            <h3>Evidencija plate</h3>
+            <h3>Istorija zarade</h3>
         </div>
         <div class="card-body">
             <div class="row table-headings">
+                <div class="col-md-2">
+                    <p><strong>Vozilo:</strong></p>
+                </div>
                 <div class="col-md-2">
                     <p><strong>Datum:</strong></p>
                 </div>
@@ -27,6 +30,9 @@
             </div>
             <div *ngFor="let payment of filteredPayments; let i = index" class="mb-3 p-3 border rounded payment-item" [ngClass]="{ 'bg-blue': i % 2 !== 0 }">
                 <div class="row">
+                    <div class="col-md-2">
+                        <p> {{ payment.idVehicle }}</p>
+                    </div>
                     <div class="col-md-2">
                         <p> {{ payment.date | date:'mediumDate' }}</p>
                     </div>

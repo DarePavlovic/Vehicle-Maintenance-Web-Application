@@ -21,6 +21,9 @@ import { RepairmentComponent } from './repairment/repairment.component';
 import { HistoryComponent } from './history/history.component';
 import { PaymentsHistoryComponent } from './payments-history/payments-history.component';
 import { HomeAdminComponent } from './home-admin/home-admin.component';
+import { EarningsComponent } from './earnings/earnings.component';
+import { HomeDriverComponent } from './home-driver/home-driver.component';
+import { EarningsMechanicComponent } from './earnings-mechanic/earnings-mechanic.component';
 
 const routes: Routes = [
   {path:"", component:LoginComponent},
@@ -46,17 +49,21 @@ const routes: Routes = [
       {path:"waitingList", component:WaitingListComponent},
       {path:"repairment", component:RepairmentComponent},
       {path:"history", component:HistoryComponent},
-      {path:"userProfile", component:UserProfileComponent}
+      {path:"userProfile", component:UserProfileComponent},
+      {path:"earnings", component:EarningsMechanicComponent}
     ]
   },
   {path:"driver", component:DriverComponent,
     children:[
+      {path:"home",component:HomeDriverComponent},
       {path:"updateUser", component:UpdateUserComponent},
       {path:"addRepair", component:AddRepairsComponent},
       {path:"addFuel",component:AddFuelComponent},
       {path:"carDetail",component:VehicleProfileComponent},
       {path:"changePassword",component:ChangePassComponent},
-      {path:"userProfile", component:UserProfileComponent}
+      {path:"userProfile", component:UserProfileComponent},
+      {path:"earnings", component:EarningsComponent},
+      {path:"**",component:HomeDriverComponent}
     ]
   },
   {path:"**", component:LoginComponent}
