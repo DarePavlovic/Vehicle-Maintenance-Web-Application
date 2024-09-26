@@ -29,7 +29,6 @@
         <div class="mb-3">
             <input type="file" class="form-control" id="slikaUpload" (change)="slikaDodata($event)"
                 accept="image/jpg, image/png, image/jpeg">
-            {{slikaPoruka}}
             <img *ngIf="slikaSacuvana" class="mt-2" id="profile" [src]="putdoslike()" alt="Profile picture" />
         </div>
         <div class="mb-3">

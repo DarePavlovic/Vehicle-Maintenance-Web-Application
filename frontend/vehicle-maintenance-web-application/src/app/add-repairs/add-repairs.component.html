@@ -17,7 +17,6 @@
         <label for="pictureBefore" class="form-label">Picture of car defect</label>
         <input type="file" class="form-control" name="pictureBefore" id="pictureBefore" (change)="slikaDodata($event)"
         accept="image/jpg, image/png, image/jpeg">
-        {{slikaPoruka}}
         <img *ngIf="slikaSacuvana" class="mt-2" id="kvar" [src]="putdoslike()" alt="kvar" style=" align-self: center; width: 500px; height: 300px;" />
       </div>
   

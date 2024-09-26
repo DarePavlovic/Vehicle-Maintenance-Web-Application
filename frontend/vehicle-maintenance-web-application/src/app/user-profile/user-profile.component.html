@@ -14,7 +14,6 @@
             
             <input #slikaUpload type="file" (change)="slikaDodata($event)" accept="image/jpg, image/png, image/jpeg" class="form-control-file">
             <br>
-            {{slikaPoruka}} Nova profilna ->
             <img *ngIf="slikaSacuvana" id="profile" [src]="putdoslike()" alt="New Profile Picture" class="img-fluid"><br>
           </div>
       </div>

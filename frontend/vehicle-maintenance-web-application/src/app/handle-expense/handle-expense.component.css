@@ -7,3 +7,9 @@
     background-color: maroon;
     border-color: transparent;
 }
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    gap: 1%
+}

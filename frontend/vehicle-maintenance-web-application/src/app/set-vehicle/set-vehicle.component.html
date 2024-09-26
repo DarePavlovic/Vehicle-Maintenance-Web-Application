@@ -3,16 +3,17 @@
       <div class="col-md-6">
         <div class="card shadow-sm p-4">
           <h5 class="card-title text-center">Dodela Vozila</h5>
+          <br />
           <form>
             <div class="form-group mb-3">
-              <label for="userSelect">Izaberite korisnika:</label>
+              <label for="userSelect" class="select-heading">Izaberite korisnika:</label>
               <select class="form-select" id="userSelect" [(ngModel)]="selectedUser" name="user">
                 <option value="">Odaberite korisnika</option>
                 <option *ngFor="let user of users" [value]="user._id">{{ user.username }}</option>
               </select>
             </div>
             <div class="form-group mb-3">
-              <label for="vehicleSelect">Izaberite vozilo:</label>
+              <label for="vehicleSelect" class="select-heading">Izaberite vozilo:</label>
               <select class="form-select" id="vehicleSelect" [(ngModel)]="selectedVehicle" name="vehicle">
                 <option value="">Odaberite vozilo</option>
                 <option *ngFor="let vehicle of vehicles" [value]="vehicle._id">{{vehicle.model }}</option>

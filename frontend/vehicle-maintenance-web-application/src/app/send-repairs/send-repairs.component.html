@@ -11,7 +11,7 @@
 
         <div class="row align-items-center">
           <div class="col-md-8">
-            <label for="mechanicSelect" class="form-label">Select Mechanic</label>
+            <label for="mechanicSelect" class="form-label select-container">Select Mechanic</label>
             <select [(ngModel)]="repair.selectedMechanic" class="form-select" id="mechanicSelect">
               <option *ngFor="let mechanic of mechanics" [value]="mechanic.id">{{ mechanic.name }}</option>
             </select>

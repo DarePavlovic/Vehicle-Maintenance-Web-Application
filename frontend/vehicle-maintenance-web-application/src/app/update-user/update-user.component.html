@@ -49,8 +49,6 @@
         <br>
         <input #slikaUpload type="file" (change)="slikaDodata($event)" accept="image/jpg, image/png, image/jpeg"><br>
         <br>
-        
-        {{slikaPoruka}} Nova profilna ->
         <br>
         <img *ngIf="slikaSacuvana" id="profile" [src]="putdoslike()" alt="Red dot" style="width: 200px; height: 200px;" /><br>
         <label style="margin: 10px;">Type</label>

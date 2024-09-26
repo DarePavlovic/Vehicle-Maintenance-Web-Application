@@ -112,18 +112,18 @@ export class RepairmentComponent implements OnInit {
   type: string = '';
   submitDefect(defect: string) {
     if (this.checkboxFault) {
-      this.type = 'Fault';
+      this.type = 'popravka';
     } else if (this.checkboxSmallService) {
-      this.type = 'Small service';
+      this.type = 'mali servis';
     }
     else if (this.checkboxBigService) {
-      this.type = 'Big service';
+      this.type = 'veliki servis';
     }
     else if (this.checkboxRegistration) {
-      this.type = 'Registration';
+      this.type = 'registracija';
     }
     else if (this.checkboxTire) {
-      this.type = 'Tire';
+      this.type = 'gume';
     }
     let price = this.inputMechanicFee + this.inputPriceParts;
     const date = new Date();

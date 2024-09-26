@@ -1,43 +1,49 @@
-<div class="fuel-tracker">
-    <h2>Unos podataka o potrošnji goriva</h2>
+<div class="fuel-tracker flex-row">
 
-    <form (ngSubmit)="addEntry()">
-        <label for="liters">Litara sipano:</label>
-        <input type="number" id="liters" [(ngModel)]="liters" name="liters" required />
+    <div class="leftDiv">
+        <h2>Unos podataka o potrošnji goriva</h2>
+        <form (ngSubmit)="addEntry()">
+            <label for="liters">Litara sipano:</label>
+            <input class="col-md-10" type="number" id="liters" [(ngModel)]="liters" name="liters" required />
 
-        <label for="mileage">Nova kilometraža:</label>
-        <input type="number" id="mileage" [(ngModel)]="mileageEntry" name="mileage" value="initialMileage" required />
+            <label for="mileage">Nova kilometraža:</label>
+            <input class="col-md-10" type="number" id="mileage" [(ngModel)]="mileageEntry" name="mileage" value="initialMileage" required />
+            <br/>
+            <button class="col-md-4 buttonAddEntry" type="submit" (click)="addEntry()">Dodaj unos</button>
+        </form>
+        <br>
+        <h3>Statistika</h3>
+        <p>Prosečna potrošnja goriva za ovaj mesec: {{ averageConsumption | number:'1.2-2' }} L/100km </p>
+        <p>Prosečna potrošnja goriva generalno: {{ consumptionGeneral | number:'1.2-2' }} L/100km </p>
+        <p>Ukupno pređeno kilometara ovog meseca: {{ milageMonth | number:'1.2-2' }} km</p>
+        <p>Ukupno pređeno kilometara: {{ milage | number:'1.2-2' }} km</p>
 
-        <button type="submit" (click)="addEntry()">Dodaj unos</button>
-    </form>
+    </div>
+    <div class="rightDiv">
+        <h3>Trenutna cena goriva u Srbiji</h3>
+        <br />
+        <!-- <p *ngIf="fuelPrice !== null">Cena goriva minimalna: {{ fuelPrice?.minPrice| number:'1.2-2' }} RSD/L</p>
+        <p *ngIf="fuelPrice !== null">Cena goriva maksimalna: {{ fuelPrice?.maxPrice| number:'1.2-2' }} RSD/L</p> -->
+        <!-- <p>Cena goriva : {{ myPrice| number:'1.2-2' }} RSD/L</p> -->
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Vrsta goriva vozila</th>
+                    <th scope="col">Minimum Price (RSD)</th>
+                    <th scope="col">Maximum Price (RSD)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fuelPrice of fuelPrices">
+                    <td>{{ fuelPrice.category }}</td>
+                    <td>{{ fuelPrice.minPrice | number: '1.2-2' }}</td>
+                    <td>{{ fuelPrice.maxPrice | number: '1.2-2' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <h3>Statistika</h3>
-    <p>Prosečna potrošnja goriva za ovaj mesec: {{ averageConsumption | number:'1.2-2' }} L/100km </p>
-    <p>Prosečna potrošnja goriva generalno: {{ consumptionGeneral | number:'1.2-2' }} L/100km </p>
-    <p>Ukupno pređeno kilometara ovog meseca: {{ milageMonth | number:'1.2-2' }} km</p>
-    <p>Ukupno pređeno kilometara: {{ milage | number:'1.2-2' }} km</p>
-
-    <h3>Trenutna cena goriva u Srbiji</h3>
-    <!-- <p *ngIf="fuelPrice !== null">Cena goriva minimalna: {{ fuelPrice?.minPrice| number:'1.2-2' }} RSD/L</p>
-    <p *ngIf="fuelPrice !== null">Cena goriva maksimalna: {{ fuelPrice?.maxPrice| number:'1.2-2' }} RSD/L</p> -->
-    <!-- <p>Cena goriva : {{ myPrice| number:'1.2-2' }} RSD/L</p> -->
-
-    <h3>Fuel Prices</h3>
-    <table class="table table-bordered">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">Vrsta goriva vozila</th>
-                <th scope="col">Minimum Price (RSD)</th>
-                <th scope="col">Maximum Price (RSD)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let fuelPrice of fuelPrices">
-                <td>{{ fuelPrice.category }}</td>
-                <td>{{ fuelPrice.minPrice | number: '1.2-2' }}</td>
-                <td>{{ fuelPrice.maxPrice | number: '1.2-2' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    
+    
 
 </div>
